@@ -6,7 +6,7 @@
 }
 
 body {
-  margin: 20px;
+  margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--white);
   color: var(--dark-blue);
@@ -19,3 +19,4 @@ header {
   color: var(--mustard-yellow);
 
 }
+
