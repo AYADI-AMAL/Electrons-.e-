@@ -19,4 +19,9 @@ header {
   color: var(--mustard-yellow);
 
 }
+p{
+  margin: 20px;
+}
+
+
 
