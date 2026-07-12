@@ -112,7 +112,7 @@ nav a:hover {
       justify-content: center;
       gap: 1.5rem;
       flex-wrap: wrap;
-      padding: 2rem 1rem;
+      padding: 0.5rem 1rem;
     }
 
     .social-icons a {
@@ -158,13 +158,16 @@ nav a:hover {
       background: #1da851;
     }
 
-    .social-section {
-      background: #f8f9fa;
-      padding: 1rem 0;
-      border-top: 2px solid #e9ecef;
-      border-bottom: 2px solid #e9ecef;
-      scroll-margin-top: 70px; /* Prevents content from hiding behind fixed nav */
-    }
+   .social-section {
+  padding: 1rem 0;
+  border-top: 3px solid var(--mustard-yellow);
+  border-bottom: 3px solid var(--mustard-yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: auto;
+}
 footer {
   background-color: var(--dark-blue);
   color: var(--white);
