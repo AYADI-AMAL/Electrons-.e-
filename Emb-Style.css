@@ -1,5 +1,3 @@
-/* ===== Emb-Style.css ===== */
-/* ===== Emb-Style.css ===== */
 :root {
   --dark-blue: #1a2b4c;
   --mustard-yellow: #f1c40f;
@@ -12,7 +10,6 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--white);
   color: var(--dark-blue);
-  padding: 0 1rem 2rem 1rem;
 }
 
 header {
@@ -20,240 +17,50 @@ header {
   padding: 1rem;
   text-align: center;
   color: var(--mustard-yellow);
-  margin-bottom: 2rem;
 }
 
-header h1 {
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-header h1 sup {
-  font-size: 1.2rem;
-  color: #f7dc6f;
-}
-
-header p {
-  margin: 0.2rem 0 0 0;
-  color: #d4e0f0;
-  font-weight: 300;
-}
-
-/* paragraph styling – original rule from Emb-Style.css */
 p {
   margin: 20px;
 }
 
-/* ----- two‑column workspace ----- */
-.workspace {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin: 1.5rem 0 2.5rem 0;
+/* C Tutorial Section Styles */
+.c-tutorial-section {
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid var(--dark-blue);
+  border-radius: 10px;
 }
 
-.editor-panel, .output-panel {
-  flex: 1 1 40%;
-  min-width: 300px;
-  background: #f8faff;
-  border-radius: 20px;
-  padding: 1.5rem 1.8rem 1.8rem 1.8rem;
-  box-shadow: 0 8px 24px rgba(26, 43, 76, 0.10);
-  border: 1px solid #e2e8f2;
-  display: flex;
-  flex-direction: column;
-}
-
-.panel-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1.2rem;
-  border-bottom: 2px solid var(--mustard-yellow);
-  padding-bottom: 0.5rem;
-}
-
-.panel-header h2 {
-  font-size: 1.5rem;
-  font-weight: 500;
+.c-tutorial-section h2 {
   color: var(--dark-blue);
-  margin: 0;
+  margin-top: 0;
 }
 
-.panel-header span {
-  background: var(--dark-blue);
-  color: var(--mustard-yellow);
-  padding: 0.1rem 0.8rem;
-  border-radius: 40px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+.c-tutorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  background-color: var(--light-grey);
+  padding: 20px;
+  border-radius: 8px;
 }
 
-/* code editor textarea */
-#codeEditor {
-  width: 100%;
-  flex: 1;
-  min-height: 280px;
-  background: #ffffff;
-  border: 1px solid #ccd6e6;
-  border-radius: 14px;
-  padding: 1rem 1.2rem;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #1a2b4c;
-  resize: vertical;
-  outline: none;
-  transition: border 0.15s;
-  tab-size: 4;
-}
-
-#codeEditor:focus {
-  border-color: var(--mustard-yellow);
-  box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.2);
-}
-
-/* output terminal */
-#outputArea {
-  flex: 1;
-  min-height: 200px;
-  background: #f2f6fe;
-  border: 1px solid #d0daea;
-  border-radius: 14px;
-  padding: 1rem 1.2rem;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  word-break: break-word;
-  overflow-y: auto;
-  color: #0f2647;
-  margin-bottom: 1rem;
-}
-
-#outputArea:empty::before {
-  content: "⏎  ready to run …";
-  color: #7b8aa8;
-  font-style: italic;
-}
-
-/* action buttons */
-.action-bar {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-top: 0.8rem;
-}
-
-.btn {
-  background: #e9eef6;
-  border: none;
-  padding: 0.6rem 1.6rem;
-  border-radius: 40px;
-  font-weight: 500;
-  font-size: 0.95rem;
+.c-tutorial-grid a {
   color: var(--dark-blue);
-  cursor: pointer;
-  transition: all 0.15s;
-  border: 1px solid #c8d3e6;
-  background: #f0f4fc;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.btn-primary {
-  background: var(--dark-blue);
-  border-color: var(--dark-blue);
-  color: var(--mustard-yellow);
-}
-
-.btn-primary:hover {
-  background: #243b66;
-  border-color: #243b66;
-  box-shadow: 0 4px 12px rgba(26, 43, 76, 0.25);
-}
-
-.btn-secondary {
-  background: #f0f4fc;
-  border-color: #c8d3e6;
-}
-
-.btn-secondary:hover {
-  background: #e2e9f5;
-  border-color: #a8b8d4;
-}
-
-.btn:active {
-  transform: scale(0.96);
-}
-
-.status-tip {
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
-  color: #3f5a7a;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.dot {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 12px;
-  background: #b0c0d8;
-}
-
-.dot.green {
-  background: #2d8f5c;
-}
-
-/* progress note – uses p margin from Emb-Style.css */
-.progress-note {
-  margin: 20px 0;
-  padding: 1rem 0 0.5rem 0;
-  border-top: 2px dashed var(--mustard-yellow);
+.c-tutorial-grid a:hover {
+  background-color: var(--mustard-yellow);
   color: var(--dark-blue);
-  font-size: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.2rem 1rem;
 }
 
-.progress-note p {
-  margin: 0;
-  display: inline;
-}
-
-.runner-badge {
-  margin-left: auto;
-  opacity: 0.6;
-  font-size: 0.9rem;
-}
-
-/* responsive */
-@media (max-width: 750px) {
-  .editor-panel, .output-panel {
-    flex: 1 1 100%;
-  }
-}
-
-/* scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #e8eef6;
-  border-radius: 12px;
-}
-::-webkit-scrollbar-thumb {
-  background: #b8c8e0;
-  border-radius: 12px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #99aecf;
+.c-tutorial-grid .home-link {
+  font-weight: bold;
 }
 footer {
   background-color: var(--dark-blue);
