@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded_Systems</title>
+    <!-- separate CSS file: Emb-Style.css (see below) -->
     <link rel="stylesheet" href="Emb-Style.css" />
     <link rel="icon" type="image/x-icon" href="image\Diploma-in-Embedded-System-1.ico">
-    <!-- Load WebAssembly C compiler -->
-    <script src="https://cdn.jsdelivr.net/npm/wa-compile@1.0.0/dist/wa-compile.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/wa-compile@1.0.0/dist/wa-compile-worker.js"></script>
 </head>
 <body>
 <header>
@@ -27,36 +25,8 @@
         <textarea id="codeEditor" spellcheck="false" aria-label="C code">#include &lt;stdio.h&gt;
 
 int main() {
-    // Variables and arithmetic
-    int a = 12;
-    int b = 14;
-    int sum = a + b;
-    
-    printf("Hello, Developer!\n");
-    printf("%d + %d = %d\n", a, b, sum);
-    
-    // Loops
-    printf("\nCounting from 1 to 5:\n");
-    for(int i = 1; i <= 5; i++) {
-        printf("%d ", i);
-    }
-    printf("\n");
-    
-    // Conditionals
-    if(sum > 20) {
-        printf("\nSum is greater than 20!\n");
-    } else {
-        printf("\nSum is 20 or less\n");
-    }
-    
-    // Factorial calculation
-    int n = 5;
-    int factorial = 1;
-    for(int i = 1; i <= n; i++) {
-        factorial *= i;
-    }
-    printf("\n%d! = %d\n", n, factorial);
-    
+    printf("Hello, Embedded World!\n");
+    printf("  >> system ready.\n");
     return 0;
 }</textarea>
         <div class="action-bar">
@@ -78,12 +48,12 @@ int main() {
         </div>
         <div id="outputArea"></div>
         <div style="font-size: 0.75rem; color: #6e85aa; margin-top: 0.2rem;">
-            ⚡ WebAssembly C compiler (Emscripten)
+            ⚡ simulated execution (stdout)
         </div>
     </section>
 </div>
 
-<!-- original "in progress" message -->
+<!-- original "in progress" message – uses p margin from Emb-Style.css -->
 <div class="progress-note">
     <p>👋 Hello Embedded Systems Developer!</p>
     <p>🚀 This page is currently in progress …</p>
@@ -104,41 +74,10 @@ int main() {
         const DEFAULT_CODE = `#include <stdio.h>
 
 int main() {
-    // Variables and arithmetic
-    int a = 12;
-    int b = 14;
-    int sum = a + b;
-    
-    printf("Hello, Developer!\\n");
-    printf("%d + %d = %d\\n", a, b, sum);
-    
-    // Loops
-    printf("\\nCounting from 1 to 5:\\n");
-    for(int i = 1; i <= 5; i++) {
-        printf("%d ", i);
-    }
-    printf("\\n");
-    
-    // Conditionals
-    if(sum > 20) {
-        printf("\\nSum is greater than 20!\\n");
-    } else {
-        printf("\\nSum is 20 or less\\n");
-    }
-    
-    // Factorial calculation
-    int n = 5;
-    int factorial = 1;
-    for(int i = 1; i <= n; i++) {
-        factorial *= i;
-    }
-    printf("\\n%d! = %d\\n", n, factorial);
-    
+    printf("Hello, Embedded World!\\n");
+    printf("  >> system ready.\\n");
     return 0;
 }`;
-
-        let compiler = null;
-        let isCompilerReady = false;
 
         function setStatus(ok, msg) {
             statusDot.className = 'dot' + (ok ? ' green' : '');
@@ -166,281 +105,7 @@ int main() {
             setStatus(true, 'reset to default');
         }
 
-        // Initialize WebAssembly C compiler
-        async function initCompiler() {
-            try {
-                appendOutput('⏳ Loading WebAssembly C compiler...');
-                setStatus(false, 'loading compiler...');
-                
-                // Using Emscripten via CDN
-                // We'll use the simple C compiler approach with a worker
-                const response = await fetch('https://cdn.jsdelivr.net/npm/wa-compile@1.0.0/dist/wa-compile-worker.js');
-                const script = await response.text();
-                
-                // Create a worker for compilation
-                const workerBlob = new Blob([`
-                    self.onmessage = function(e) {
-                        try {
-                            const code = e.data;
-                            // Simple compilation simulation - we'll use the real thing
-                            // For now, we'll use a simplified approach until we have full WASM support
-                            const result = compileC(code);
-                            self.postMessage({ success: true, output: result });
-                        } catch(error) {
-                            self.postMessage({ success: false, error: error.message });
-                        }
-                    }
-                    
-                    function compileC(code) {
-                        // This is where the real compilation would happen
-                        // For demonstration, we'll use our improved interpreter
-                        // until we can integrate a full WASM compiler
-                        return interpretC(code);
-                    }
-                    
-                    // Include the interpreter here
-                    ${interpretC.toString()}
-                `]);
-                
-                const worker = new Worker(URL.createObjectURL(workerBlob));
-                compiler = worker;
-                isCompilerReady = true;
-                
-                appendOutput('✅ Compiler loaded successfully!');
-                setStatus(true, 'compiler ready');
-                return true;
-            } catch (error) {
-                appendOutput('⚠️ Could not load WebAssembly compiler. Using fallback interpreter.');
-                setStatus(false, 'using fallback');
-                // Fallback to our interpreter
-                compiler = null;
-                isCompilerReady = false;
-                return false;
-            }
-        }
-
-        // Our improved C interpreter (fallback and also used for demonstration)
-        function interpretC(code) {
-            // Remove comments
-            code = code.replace(/\/\/.*$/gm, '');
-            code = code.replace(/\/\*[\s\S]*?\*\//g, '');
-            
-            const variables = {};
-            const output = [];
-            let insideMain = false;
-            
-            // Helper function to evaluate expressions
-            function evaluateExpression(expr) {
-                expr = expr.trim();
-                // Handle special cases
-                if (expr === 'true') return true;
-                if (expr === 'false') return false;
-                if (expr === 'NULL') return null;
-                
-                // Replace variable names with their values
-                for (const [varName, varValue] of Object.entries(variables)) {
-                    const regex = new RegExp('\\b' + varName + '\\b', 'g');
-                    expr = expr.replace(regex, varValue);
-                }
-                try {
-                    // Handle common C operators
-                    expr = expr.replace(/&&/g, '&&');
-                    expr = expr.replace(/\|\|/g, '||');
-                    expr = expr.replace(/==/g, '===');
-                    expr = expr.replace(/!=/g, '!==');
-                    // Convert C-style comparison to JavaScript
-                    return Function('"use strict"; return (' + expr + ')')();
-                } catch (e) {
-                    return null;
-                }
-            }
-            
-            // Helper to process printf
-            function processPrintf(line) {
-                const printfRegex = /printf\s*\(\s*"([^"]*)"\s*(?:,\s*(.*?))?\s*\)\s*;/;
-                const match = line.match(printfRegex);
-                if (match) {
-                    let format = match[1];
-                    const args = match[2] ? match[2].split(',').map(s => s.trim()) : [];
-                    
-                    let result = '';
-                    let argIndex = 0;
-                    let i = 0;
-                    while (i < format.length) {
-                        if (format[i] === '%' && i + 1 < format.length) {
-                            const specifier = format[i + 1];
-                            if (specifier === 'd' || specifier === 'i' || specifier === 'f' || 
-                                specifier === 's' || specifier === 'c' || specifier === 'x' || 
-                                specifier === 'X' || specifier === 'p' || specifier === '%') {
-                                if (specifier === '%') {
-                                    result += '%';
-                                } else if (argIndex < args.length) {
-                                    let arg = args[argIndex];
-                                    // Evaluate the argument if it's an expression
-                                    const evaluated = evaluateExpression(arg);
-                                    if (evaluated !== null) {
-                                        arg = evaluated;
-                                    } else if (!isNaN(arg)) {
-                                        arg = parseFloat(arg);
-                                    }
-                                    // Format according to specifier
-                                    if (specifier === 'd' || specifier === 'i') {
-                                        result += Math.floor(Number(arg));
-                                    } else if (specifier === 'f') {
-                                        result += Number(arg).toFixed(6);
-                                    } else if (specifier === 's') {
-                                        result += String(arg);
-                                    } else if (specifier === 'c') {
-                                        result += String.fromCharCode(Number(arg));
-                                    } else {
-                                        result += String(arg);
-                                    }
-                                    argIndex++;
-                                } else {
-                                    result += format[i] + format[i+1];
-                                }
-                                i += 2;
-                            } else {
-                                result += format[i];
-                                i++;
-                            }
-                        } else {
-                            result += format[i];
-                            i++;
-                        }
-                    }
-                    
-                    // Handle escape sequences
-                    result = result.replace(/\\n/g, '\n');
-                    result = result.replace(/\\t/g, '\t');
-                    result = result.replace(/\\\\/g, '\\');
-                    result = result.replace(/\\"/g, '"');
-                    result = result.replace(/\\r/g, '\r');
-                    result = result.replace(/\\0/g, '\0');
-                    
-                    return result;
-                }
-                return null;
-            }
-            
-            // Process the code line by line
-            const lines = code.split('\n');
-            
-            for (let line of lines) {
-                const trimmed = line.trim();
-                if (!trimmed) continue;
-                
-                // Skip preprocessor directives
-                if (trimmed.startsWith('#include') || trimmed.startsWith('#define')) continue;
-                
-                // Check if we're inside main
-                if (trimmed.includes('main()') || trimmed.includes('main (') || trimmed.includes('main(')) {
-                    insideMain = true;
-                    continue;
-                }
-                
-                if (!insideMain) continue;
-                
-                // Skip function braces
-                if (trimmed === '{' || trimmed === '}') continue;
-                
-                // Handle variable declarations and assignments
-                const varDeclMatch = trimmed.match(/^(int|float|double|char)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*(?:=\s*([^;]+))?;/);
-                if (varDeclMatch) {
-                    const name = varDeclMatch[2];
-                    let value = varDeclMatch[3];
-                    if (value) {
-                        const evaluated = evaluateExpression(value);
-                        if (evaluated !== null) {
-                            variables[name] = evaluated;
-                        } else {
-                            variables[name] = 0;
-                        }
-                    } else {
-                        variables[name] = 0;
-                    }
-                    continue;
-                }
-                
-                // Handle assignments
-                const assignMatch = trimmed.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*([+\-*/%]?=)\s*([^;]+);/);
-                if (assignMatch) {
-                    const name = assignMatch[1];
-                    const operator = assignMatch[2];
-                    const value = assignMatch[3];
-                    const evaluated = evaluateExpression(value);
-                    if (evaluated !== null) {
-                        if (operator === '=') {
-                            variables[name] = evaluated;
-                        } else if (operator === '+=') {
-                            variables[name] = (variables[name] || 0) + evaluated;
-                        } else if (operator === '-=') {
-                            variables[name] = (variables[name] || 0) - evaluated;
-                        } else if (operator === '*=') {
-                            variables[name] = (variables[name] || 0) * evaluated;
-                        } else if (operator === '/=') {
-                            variables[name] = (variables[name] || 0) / evaluated;
-                        } else if (operator === '%=') {
-                            variables[name] = (variables[name] || 0) % evaluated;
-                        }
-                    }
-                    continue;
-                }
-                
-                // Handle simple assignments
-                const simpleAssign = trimmed.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*([^;]+);/);
-                if (simpleAssign) {
-                    const name = simpleAssign[1];
-                    const value = simpleAssign[2];
-                    const evaluated = evaluateExpression(value);
-                    if (evaluated !== null) {
-                        variables[name] = evaluated;
-                    }
-                    continue;
-                }
-                
-                // Handle for loops - simplified
-                const forMatch = trimmed.match(/^for\s*\(\s*(?:int\s+)?([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*([^;]+);\s*([^;]+);\s*([^)]+)\)/);
-                if (forMatch) {
-                    const varName = forMatch[1];
-                    const startVal = evaluateExpression(forMatch[2]);
-                    const condition = forMatch[3];
-                    const increment = forMatch[4];
-                    
-                    if (startVal !== null) {
-                        variables[varName] = startVal;
-                        // We'll handle the body in the next lines
-                        // This is a simplified approach
-                    }
-                    continue;
-                }
-                
-                // Handle if statements
-                const ifMatch = trimmed.match(/^if\s*\(\s*([^)]+)\s*\)/);
-                if (ifMatch) {
-                    const condition = ifMatch[1];
-                    const result = evaluateExpression(condition);
-                    // We'll handle the body in the next lines
-                    continue;
-                }
-                
-                // Handle printf
-                const printfResult = processPrintf(trimmed);
-                if (printfResult !== null) {
-                    output.push(printfResult);
-                    continue;
-                }
-                
-                // Handle return statement
-                if (trimmed.startsWith('return')) {
-                    break;
-                }
-            }
-            
-            return output;
-        }
-
-        async function runCcode() {
+        function runCcode() {
             const code = codeEditor.value;
             if (!code || code.trim() === '') {
                 appendOutput('⚠️  empty code — nothing to run.');
@@ -449,38 +114,59 @@ int main() {
             }
 
             setStatus(false, 'compiling …');
-            appendOutput('▶  compiling with WebAssembly C compiler...');
+            appendOutput('▶  compiling ...');
 
-            try {
-                // Use the interpreter (since we're using it as fallback)
-                const outputLines = interpretC(code);
-                
-                if (outputLines.length === 0) {
-                    appendOutput('✅  compilation successful.\n(no printf output)');
-                } else {
-                    appendOutput('✅  compilation successful.');
-                    for (let line of outputLines) {
-                        appendOutput(line);
+            setTimeout(() => {
+                try {
+                    let outputLines = [];
+                    let lines = code.split('\n');
+                    let insideMain = false;
+
+                    for (let line of lines) {
+                        let trimmed = line.trim();
+                        if (trimmed.startsWith('#include')) continue;
+                        if (trimmed.startsWith('//')) continue;
+                        if (trimmed.startsWith('/*')) continue;
+                        if (trimmed.startsWith('*')) continue;
+
+                        if (trimmed.includes('main()') || trimmed.includes('main (') || trimmed.includes('main(')) {
+                            insideMain = true;
+                            continue;
+                        }
+
+                        if (!insideMain) continue;
+
+                        if (trimmed === '{' || trimmed === '}' || trimmed.startsWith('return')) continue;
+                        if (trimmed === '') continue;
+
+                        const printfRegex = /printf\s*\(\s*"([^"]*)"\s*\)\s*;/g;
+                        let match;
+                        let found = false;
+                        while ((match = printfRegex.exec(line)) !== null) {
+                            found = true;
+                            let content = match[1];
+                            content = content.replace(/\\n/g, '\n')
+                                             .replace(/\\t/g, '\t')
+                                             .replace(/\\\\/g, '\\')
+                                             .replace(/\\"/g, '"');
+                            outputLines.push(content);
+                        }
                     }
-                }
-                setStatus(true, 'done');
-            } catch (error) {
-                appendOutput('❌  compilation error: ' + error.message);
-                setStatus(false, 'error');
-            }
-        }
 
-        // Initialize the compiler when the page loads
-        async function init() {
-            await initCompiler();
-            setStatus(true, 'ready');
-            
-            if (codeEditor.value.trim() === '') {
-                codeEditor.value = DEFAULT_CODE;
-            }
-            outputArea.textContent = '';
-            appendOutput('💡  write C code, then press ▶ Run or Ctrl+Enter');
-            appendOutput('🔧 Using WebAssembly C compiler (Emscripten)');
+                    if (outputLines.length === 0) {
+                        outputLines.push('(no printf output)');
+                    }
+
+                    let finalOutput = outputLines.join('');
+                    if (finalOutput.trim() === '') finalOutput = '(empty output)';
+
+                    appendOutput('✅  execution finished.\n' + finalOutput);
+                    setStatus(true, 'done');
+                } catch (err) {
+                    appendOutput('❌  runtime error: ' + err.message);
+                    setStatus(false, 'error');
+                }
+            }, 180);
         }
 
         runBtn.addEventListener('click', runCcode);
@@ -497,8 +183,13 @@ int main() {
             }
         });
 
-        // Start the application
-        init();
+        setStatus(true, 'ready');
+        if (codeEditor.value.trim() === '') {
+            codeEditor.value = DEFAULT_CODE;
+        }
+        outputArea.textContent = '';
+        appendOutput('💡  write C code, then press ▶ Run or Ctrl+Enter');
+        setStatus(true, 'ready');
     })();
 </script>
 <footer>
@@ -519,6 +210,5 @@ int main() {
 </script>
 </body>
 </html>
-
 
 
