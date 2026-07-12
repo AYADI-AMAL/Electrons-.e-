@@ -19,7 +19,7 @@ header {
   padding: 1rem;
   text-align: center;
   color: var(--mustard-yellow);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 header h1 {
@@ -41,84 +41,6 @@ header p {
 
 p {
   margin: 20px;
-}
-
-/* Example Selector Section */
-.example-selector {
-  background: #f8faff;
-  border-radius: 20px;
-  padding: 1.5rem 1.8rem;
-  margin-bottom: 2rem;
-  border: 1px solid #e2e8f2;
-  box-shadow: 0 4px 12px rgba(26, 43, 76, 0.08);
-}
-
-.selector-header {
-  margin-bottom: 1rem;
-}
-
-.selector-header h2 {
-  font-size: 1.4rem;
-  color: var(--dark-blue);
-  margin: 0 0 0.2rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.selector-header p {
-  margin: 0;
-  color: #6e85aa;
-  font-size: 0.9rem;
-}
-
-.example-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0.8rem;
-  margin-top: 0.8rem;
-}
-
-.example-btn {
-  background: var(--white);
-  border: 2px solid #e2e8f2;
-  border-radius: 12px;
-  padding: 0.8rem 0.6rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.2rem;
-}
-
-.example-btn:hover {
-  border-color: var(--dark-blue);
-  background: #f0f4fc;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(26, 43, 76, 0.12);
-}
-
-.example-btn.active {
-  border-color: var(--mustard-yellow);
-  background: #fef9e7;
-  box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.2);
-}
-
-.example-icon {
-  font-size: 1.6rem;
-}
-
-.example-label {
-  font-weight: 600;
-  color: var(--dark-blue);
-  font-size: 0.9rem;
-}
-
-.example-desc {
-  font-size: 0.7rem;
-  color: #6e85aa;
 }
 
 .workspace {
@@ -306,10 +228,6 @@ p {
 @media (max-width: 750px) {
   .editor-panel, .output-panel {
     flex: 1 1 100%;
-  }
-  
-  .example-grid {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   }
 }
 
