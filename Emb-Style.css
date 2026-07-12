@@ -74,7 +74,7 @@ p {
 
 .example-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 0.8rem;
   margin-top: 0.8rem;
 }
@@ -90,7 +90,7 @@ p {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.1rem;
+  gap: 0.2rem;
 }
 
 .example-btn:hover {
@@ -108,7 +108,6 @@ p {
 
 .example-icon {
   font-size: 1.6rem;
-  line-height: 1.2;
 }
 
 .example-label {
@@ -120,17 +119,6 @@ p {
 .example-desc {
   font-size: 0.7rem;
   color: #6e85aa;
-}
-
-.example-def {
-  font-size: 0.65rem;
-  color: #4a6a8a;
-  background: #f0f5fa;
-  padding: 0.2rem 0.4rem;
-  border-radius: 6px;
-  margin-top: 0.2rem;
-  width: 100%;
-  line-height: 1.3;
 }
 
 .workspace {
@@ -321,25 +309,7 @@ p {
   }
   
   .example-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  }
-  
-  .example-def {
-    font-size: 0.6rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .example-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
-  
-  .example-btn {
-    padding: 0.6rem 0.4rem;
-  }
-  
-  .example-def {
-    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   }
 }
 
