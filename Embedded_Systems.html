@@ -9,10 +9,182 @@
 </head>
 <body>
 <header>
-<h1>Electrons <sup>.e-</sup> Academy</h1>
-<p>Master Embedded Systems Development</p>
+    <h1>Electrons <sup>.e-</sup> Academy</h1>
+    <p>Master Embedded Systems Development</p>
 </header>
-<p>Hello Embedded Systems Developer! 👋<br>This page is currently in progress… 🚀 <br>Please stay tuned for awesome content coming soon! 🔧💻</p>
+
+<!-- two‑column section: C editor + output runner -->
+<div class="workspace">
+    <!-- LEFT: C code editor -->
+    <section class="editor-panel">
+        <div class="panel-header">
+            <h2>✎ C editor</h2>
+            <span>main.c</span>
+        </div>
+        <textarea id="codeEditor" spellcheck="false" aria-label="C code">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, Embedded World!\n");
+    printf("  >> system ready.\n");
+    return 0;
+}</textarea>
+        <div class="action-bar">
+            <button class="btn btn-primary" id="runBtn">▶ Run</button>
+            <button class="btn btn-secondary" id="resetBtn">↺ reset</button>
+            <button class="btn btn-secondary" id="clearBtn">⌧ clear</button>
+        </div>
+        <div class="status-tip">
+            <span class="dot" id="statusDot"></span>
+            <span id="statusMsg">ready</span>
+        </div>
+    </section>
+
+    <!-- RIGHT: output terminal -->
+    <section class="output-panel">
+        <div class="panel-header">
+            <h2>⏺ output</h2>
+            <span>terminal</span>
+        </div>
+        <div id="outputArea"></div>
+        <div style="font-size: 0.75rem; color: #6e85aa; margin-top: 0.2rem;">
+            ⚡ simulated execution (stdout)
+        </div>
+    </section>
+</div>
+
+<script>
+    (function() {
+        const codeEditor = document.getElementById('codeEditor');
+        const outputArea = document.getElementById('outputArea');
+        const runBtn = document.getElementById('runBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const statusDot = document.getElementById('statusDot');
+        const statusMsg = document.getElementById('statusMsg');
+
+        const DEFAULT_CODE = `#include <stdio.h>
+
+int main() {
+    printf("Hello, Embedded World!\\n");
+    printf("  >> system ready.\\n");
+    return 0;
+}`;
+
+        function setStatus(ok, msg) {
+            statusDot.className = 'dot' + (ok ? ' green' : '');
+            statusMsg.textContent = msg;
+        }
+
+        function appendOutput(text) {
+            if (!outputArea) return;
+            if (outputArea.textContent.trim() === '' || outputArea.textContent === '⏎  ready to run …') {
+                outputArea.textContent = text;
+            } else {
+                outputArea.textContent += '\n' + text;
+            }
+            outputArea.scrollTop = outputArea.scrollHeight;
+        }
+
+        function clearOutput() {
+            outputArea.textContent = '';
+            setStatus(true, 'cleared');
+        }
+
+        function resetEditor() {
+            codeEditor.value = DEFAULT_CODE;
+            clearOutput();
+            setStatus(true, 'reset to default');
+        }
+
+        function runCcode() {
+            const code = codeEditor.value;
+            if (!code || code.trim() === '') {
+                appendOutput('⚠️  empty code — nothing to run.');
+                setStatus(false, 'empty code');
+                return;
+            }
+
+            setStatus(false, 'compiling …');
+            appendOutput('▶  compiling ...');
+
+            setTimeout(() => {
+                try {
+                    let outputLines = [];
+                    let lines = code.split('\n');
+                    let insideMain = false;
+
+                    for (let line of lines) {
+                        let trimmed = line.trim();
+                        if (trimmed.startsWith('#include')) continue;
+                        if (trimmed.startsWith('//')) continue;
+                        if (trimmed.startsWith('/*')) continue;
+                        if (trimmed.startsWith('*')) continue;
+
+                        if (trimmed.includes('main()') || trimmed.includes('main (') || trimmed.includes('main(')) {
+                            insideMain = true;
+                            continue;
+                        }
+
+                        if (!insideMain) continue;
+
+                        if (trimmed === '{' || trimmed === '}' || trimmed.startsWith('return')) continue;
+                        if (trimmed === '') continue;
+
+                        const printfRegex = /printf\s*\(\s*"([^"]*)"\s*\)\s*;/g;
+                        let match;
+                        let found = false;
+                        while ((match = printfRegex.exec(line)) !== null) {
+                            found = true;
+                            let content = match[1];
+                            content = content.replace(/\\n/g, '\n')
+                                             .replace(/\\t/g, '\t')
+                                             .replace(/\\\\/g, '\\')
+                                             .replace(/\\"/g, '"');
+                            outputLines.push(content);
+                        }
+                    }
+
+                    if (outputLines.length === 0) {
+                        outputLines.push('(no printf output)');
+                    }
+
+                    let finalOutput = outputLines.join('');
+                    if (finalOutput.trim() === '') finalOutput = '(empty output)';
+
+                    appendOutput('✅  execution finished.\n' + finalOutput);
+                    setStatus(true, 'done');
+                } catch (err) {
+                    appendOutput('❌  runtime error: ' + err.message);
+                    setStatus(false, 'error');
+                }
+            }, 180);
+        }
+
+        runBtn.addEventListener('click', runCcode);
+        resetBtn.addEventListener('click', resetEditor);
+        clearBtn.addEventListener('click', function() {
+            clearOutput();
+            setStatus(true, 'output cleared');
+        });
+
+        codeEditor.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                runCcode();
+            }
+        });
+
+        setStatus(true, 'ready');
+        if (codeEditor.value.trim() === '') {
+            codeEditor.value = DEFAULT_CODE;
+        }
+        outputArea.textContent = '';
+        appendOutput('💡  write C code, then press ▶ Run or Ctrl+Enter');
+        setStatus(true, 'ready');
+    })();
+</script>
+
+</body>
 </html>
 
 
