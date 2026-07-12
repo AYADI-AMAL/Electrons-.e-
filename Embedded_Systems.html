@@ -183,7 +183,22 @@ int main() {
         setStatus(true, 'ready');
     })();
 </script>
+<footer>
+  <div class="footer-content">
+    <div class="footer-right">
+      <!-- AUTO-UPDATING COPYRIGHT YEAR -->
+      <p>&copy; <span id="copyright-year"></span> Electrons <sup>.e-</sup> Academy | Designed for future innovators</p>
+    </div>
+  </div>
+</footer>
 
+<!-- JAVASCRIPT TO AUTO-UPDATE THE YEAR -->
+<script>
+  // Get the current year automatically
+  const currentYear = new Date().getFullYear();
+  // Update the copyright year in the footer
+  document.getElementById('copyright-year').textContent = currentYear;
+</script>
 </body>
 </html>
 
