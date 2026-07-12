@@ -254,3 +254,9 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: #99aecf;
 }
+footer {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+}
