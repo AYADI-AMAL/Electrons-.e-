@@ -105,7 +105,42 @@ nav a:hover {
   border: 2px solid var(--dark-blue);
   border-radius: 8px;
 }
+/* Social Section - Before Footer */
+.social-section {
+  background: var(--white);
+  padding: 2rem 1rem;
+  text-align: center;
+  border-top: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--light-grey);
+}
 
+.social-section .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-section .social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--dark-blue);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-section .social-icons a:hover {
+  background: var(--mustard-yellow);
+  color: var(--dark-blue);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(241, 196, 15, 0.3);
+}
 footer {
   background-color: var(--dark-blue);
   color: var(--white);
