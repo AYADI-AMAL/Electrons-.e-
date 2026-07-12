@@ -160,8 +160,8 @@ nav a:hover {
 
    .social-section {
   padding: 1rem 0;
-  border-top: 3px solid var(--mustard-yellow);
-  border-bottom: 3px solid var(--mustard-yellow);
+  border-top: 1px solid var(--light-grey);
+  border-bottom: 1px solid var(--light-grey);
   display: flex;
   flex-direction: column;
   align-items: center;
