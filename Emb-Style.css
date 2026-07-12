@@ -32,11 +32,13 @@ p {
 
 /* C Tutorial Section - Left Sidebar */
 .c-tutorial-section {
-  flex: 0 0 250px;
+  flex: 0 0 280px;
   padding: 20px;
   border: 2px solid var(--dark-blue);
   border-radius: 10px;
   height: fit-content;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .c-tutorial-section h2 {
@@ -50,24 +52,40 @@ p {
 .c-tutorial-grid {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
+}
+
+.c-tutorial-grid .category-title {
+  font-weight: bold;
+  color: var(--dark-blue);
+  padding: 10px 12px 5px 12px;
+  margin-top: 10px;
+  border-bottom: 1px solid var(--mustard-yellow);
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.c-tutorial-grid .category-title:first-of-type {
+  margin-top: 0;
 }
 
 .c-tutorial-grid a {
   color: var(--dark-blue);
   text-decoration: none;
   display: block;
-  padding: 8px 12px;
+  padding: 6px 12px 6px 25px;
   border-radius: 4px;
   transition: all 0.3s ease;
   border-left: 3px solid transparent;
+  font-size: 0.95em;
 }
 
 .c-tutorial-grid a:hover {
   background-color: var(--mustard-yellow);
   color: var(--dark-blue);
   border-left: 3px solid var(--dark-blue);
-  padding-left: 16px;
+  padding-left: 30px;
 }
 
 .c-tutorial-grid .home-link {
@@ -75,12 +93,14 @@ p {
   background-color: var(--dark-blue);
   color: var(--mustard-yellow);
   border-left: 3px solid var(--mustard-yellow);
+  padding-left: 12px;
 }
 
 .c-tutorial-grid .home-link:hover {
   background-color: var(--mustard-yellow);
   color: var(--dark-blue);
   border-left: 3px solid var(--dark-blue);
+  padding-left: 18px;
 }
 
 /* Content area next to sidebar */
