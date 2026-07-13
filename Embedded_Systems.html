@@ -12,14 +12,15 @@
   <h1>Electrons <sup>.e-</sup> Academy</h1>
   <p>Master Embedded Systems Development</p>
 </header>
-
 <div class="main-container">
   <!-- LEFT SIDEBAR : C Tutorial list -->
   <section class="c-tutorial-section">
     <h2>C TUTORIAL</h2>
     <div class="c-tutorial-grid" id="tutorialGrid">
-      <!-- data-topic attribute maps to content -->
-      <a href="https://ayadi-amal.github.io/Electrons-.e-/" class="home-link" data-topic="home">C HOME</a>
+      <!-- HOME is a REAL LINK: goes to https://ayadi-amal.github.io/Electrons-.e-/ -->
+      <a href="https://ayadi-amal.github.io/Electrons-.e-/" class="home-link" target="_blank">C HOME</a>
+
+      <!-- all other items are data‑topic driven (no href) -->
       <a href="#" data-topic="intro">C Intro</a>
       <a href="#" data-topic="getstarted">C Get Started</a>
       <a href="#" data-topic="syntax">C Syntax</a>
@@ -106,6 +107,7 @@
   <!-- RIGHT CONTENT AREA (side‑by‑side) -->
   <div class="content-area" id="contentArea">
     <div id="dynamicContent">
+      <!-- initial state: default message (no home content) -->
       <h2>👋 Hello Embedded Developer</h2>
       <div class="content-body">
         <div class="placeholder-message">
@@ -134,6 +136,7 @@
     const dynamicContent = document.getElementById('dynamicContent');
 
     // ----- CONTENT LIBRARY (keyed by data-topic) -----
+    // (home is NOT included – it's a real link)
     const contentMap = {
       intro: {
         title: 'C Intro',
@@ -382,7 +385,7 @@
       }
     };
 
-    // ----- helper: render topic -----
+    // ----- helper: render topic (only for non‑home items) -----
     function renderTopic(topicKey) {
       const data = contentMap[topicKey];
       if (data) {
@@ -391,7 +394,7 @@
           <div class="content-body">${data.body}</div>
         `;
       } else {
-        // fallback
+        // fallback (should not happen for valid keys)
         dynamicContent.innerHTML = `
           <h2>📘 ${topicKey ? topicKey.charAt(0).toUpperCase() + topicKey.slice(1) : 'Topic'}</h2>
           <div class="content-body">
@@ -403,7 +406,7 @@
         `;
       }
 
-      // update active class on sidebar links
+      // update active class on sidebar links (only for non‑home items)
       const allLinks = grid.querySelectorAll('a[data-topic]');
       allLinks.forEach(link => {
         link.classList.remove('active-item');
@@ -413,24 +416,33 @@
       });
     }
 
-    // ----- attach click listeners to all topic links -----
-    const allTopicLinks = grid.querySelectorAll('a[data-topic]');
-    allTopicLinks.forEach(link => {
+    // ----- attach click listeners to all NON‑HOME links (they have data-topic) -----
+    const topicLinks = grid.querySelectorAll('a[data-topic]');
+    topicLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        e.preventDefault();
+        e.preventDefault();  // prevent hash change
         const topic = this.getAttribute('data-topic');
-        if (topic) {
+        if (topic && contentMap[topic]) {
           renderTopic(topic);
         }
       });
     });
 
-    // ----- on load: show 'home' content by default (or from URL hash) -----
-    const hash = window.location.hash.replace('#', '') || 'home';
-    const initialTopic = contentMap[hash] ? hash : 'home';
-    renderTopic(initialTopic);
+    // ----- on load: show default content (no home) -----
+    // We do NOT render home. Keep the initial placeholder.
+    // But if there is a hash like #intro, we can show that topic.
+    const hash = window.location.hash.replace('#', '');
+    if (hash && contentMap[hash]) {
+      renderTopic(hash);
+    } else {
+      // default: keep the placeholder (already in HTML)
+      // but we want to ensure no active class on home
+      const allLinks = grid.querySelectorAll('a[data-topic]');
+      allLinks.forEach(link => link.classList.remove('active-item'));
+    }
   })();
 </script>
 
 </body>
 </html>
+
