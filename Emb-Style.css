@@ -1,4 +1,4 @@
-    :root {
+:root {
       --dark-blue: #1a2b4c;
       --mustard-yellow: #f1c40f;
       --white: #ffffff;
@@ -93,6 +93,7 @@
       margin-top: 0;
     }
 
+    /* --- all sidebar links (except home) are clickable and load content --- */
     .c-tutorial-grid a {
       color: var(--dark-blue);
       text-decoration: none;
@@ -113,13 +114,15 @@
       padding-left: 28px;
     }
 
-    /* home link special */
+    /* HOME link is a real <a> that goes to a URL */
     .c-tutorial-grid .home-link {
       font-weight: 600;
       background-color: var(--dark-blue);
       color: var(--mustard-yellow);
       border-left: 3px solid var(--mustard-yellow);
       padding-left: 14px;
+      cursor: pointer;
+      text-decoration: none;
     }
     .c-tutorial-grid .home-link:hover {
       background-color: var(--mustard-yellow);
@@ -128,7 +131,7 @@
       padding-left: 20px;
     }
 
-    /* active item (highlighted) */
+    /* active item (highlighted) – for non‑home items */
     .c-tutorial-grid a.active-item {
       background-color: var(--mustard-yellow);
       color: var(--dark-blue);
