@@ -1,131 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded_Systems</title>
-    <link rel="stylesheet" href="Emb-Style.css" />
-    <link rel="icon" type="image/x-icon" href="image\Diploma-in-Embedded-System-1.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embedded_Systems</title>
 </head>
 <body>
 <header>
-<h1>Electrons <sup>.e-</sup> Academy</h1>
-<p>Master Embedded Systems Development</p>
+  <h1>Electrons <sup>.e-</sup> Academy</h1>
+  <p>Master Embedded Systems Development</p>
 </header>
 
 <div class="main-container">
-    <!-- C Tutorial Section - Left Sidebar -->
-      <section class="c-tutorial-section">
-        <h2>C TUTORIAL</h2>
-        
-        <div class="c-tutorial-grid">
-            <a href="https://ayadi-amal.github.io/Electrons-.e-/" class="home-link">C HOME</a>
-            <a href="#">C Intro</a>
-            <a href="#">C Get Started</a>
-            <a href="#">C Syntax</a>
-            <a href="#">C Output</a>
-            <a href="#">C Comments</a>
-            <a href="#">C Variables</a>
-            <a href="#">C Data Types</a>
-            <a href="#">C Type Conversion</a>
-            <a href="#">C Constants</a>
-            <a href="#">C Operators</a>
-            <a href="#">C Booleans</a>
-            <a href="#">C If...Else</a>
-            <a href="#">C Switch</a>
-            <a href="#">C While Loop</a>
-            <a href="#">C For Loop</a>
-            <a href="#">C Break/Continue</a>
-            <a href="#">C Arrays</a>
-            <a href="#">C Strings</a>
-            <a href="#">C User Input</a>
-            <a href="#">C Memory Address</a>
-            <a href="#">C Pointers</a>
-            
-            <!-- C Functions Category -->
-            <div class="category-title">C FUNCTIONS</div>
-            <a href="#">C Functions</a>
-            <a href="#">C Function Parameters</a>
-            <a href="#">C Scope</a>
-            <a href="#">C Function Declaration</a>
-            <a href="#">C Functions Challenge</a>
-            <a href="#">C Math Functions</a>
-            <a href="#">C Inline Functions</a>
-            <a href="#">C Recursion</a>
-            <a href="#">C Function Pointers</a>
-            
-            <!-- C Files Category -->
-            <div class="category-title">C FILES</div>
-            <a href="#">C Create Files</a>
-            <a href="#">C Write To Files</a>
-            <a href="#">C Read Files</a>
-            
-            <!-- C Structures Category -->
-            <div class="category-title">C STRUCTURES</div>
-            <a href="#">C Structures</a>
-            <a href="#">C Structs Challenge</a>
-            <a href="#">C Nested Structures</a>
-            <a href="#">C Structs &amp; Pointers</a>
-            <a href="#">C Unions</a>
-            <a href="#">C typedef</a>
-            <a href="#">C Struct Padding</a>
-            
-            <!-- C Enums Category -->
-            <div class="category-title">C ENUMS</div>
-            <a href="#">C Enums</a>
-            
-            <!-- C Memory Category -->
-            <div class="category-title">C MEMORY</div>
-            <a href="#">C Memory Management</a>
-            
-            <!-- C Errors Category -->
-            <div class="category-title">C ERRORS</div>
-            <a href="#">C Errors</a>
-            <a href="#">C Error Challenge</a>
-            <a href="#">C Debugging</a>
-            <a href="#">C NULL</a>
-            <a href="#">C Error Handling</a>
-            <a href="#">C Input Validation</a>
-            
-            <!-- C More Category -->
-            <div class="category-title">C MORE</div>
-            <a href="#">C Date</a>
-            <a href="#">C Random Numbers</a>
-            <a href="#">C Macros</a>
-            <a href="#">C Organize Code</a>
-            <a href="#">C Storage Classes</a>
-            <a href="#">C Bitwise Operators</a>
-            <a href="#">C Fixed-width Integers</a>
-            
-            <!-- C Projects Category -->
-            <div class="category-title">C PROJECTS</div>
-            <a href="#">C Projects</a>
-        </div>
-    </section>
+  <!-- LEFT SIDEBAR : C Tutorial list -->
+  <section class="c-tutorial-section">
+    <h2>C TUTORIAL</h2>
+    <div class="c-tutorial-grid" id="tutorialGrid">
+      <!-- data-topic attribute maps to content -->
+      <a href="https://ayadi-amal.github.io/Electrons-.e-/" class="home-link" data-topic="home">C HOME</a>
+      <a href="#" data-topic="intro">C Intro</a>
+      <a href="#" data-topic="getstarted">C Get Started</a>
+      <a href="#" data-topic="syntax">C Syntax</a>
+      <a href="#" data-topic="output">C Output</a>
+      <a href="#" data-topic="comments">C Comments</a>
+      <a href="#" data-topic="variables">C Variables</a>
+      <a href="#" data-topic="datatypes">C Data Types</a>
+      <a href="#" data-topic="typeconversion">C Type Conversion</a>
+      <a href="#" data-topic="constants">C Constants</a>
+      <a href="#" data-topic="operators">C Operators</a>
+      <a href="#" data-topic="booleans">C Booleans</a>
+      <a href="#" data-topic="ifelse">C If...Else</a>
+      <a href="#" data-topic="switch">C Switch</a>
+      <a href="#" data-topic="whileloop">C While Loop</a>
+      <a href="#" data-topic="forloop">C For Loop</a>
+      <a href="#" data-topic="breakcontinue">C Break/Continue</a>
+      <a href="#" data-topic="arrays">C Arrays</a>
+      <a href="#" data-topic="strings">C Strings</a>
+      <a href="#" data-topic="userinput">C User Input</a>
+      <a href="#" data-topic="memoryaddress">C Memory Address</a>
+      <a href="#" data-topic="pointers">C Pointers</a>
 
-    <!-- Main Content Area -->
-    <div class="content-area">
-       
-    </div> 
+      <!-- C FUNCTIONS -->
+      <div class="category-title">C FUNCTIONS</div>
+      <a href="#" data-topic="functions">C Functions</a>
+      <a href="#" data-topic="funcparams">C Function Parameters</a>
+      <a href="#" data-topic="scope">C Scope</a>
+      <a href="#" data-topic="funcdeclaration">C Function Declaration</a>
+      <a href="#" data-topic="funcschallenge">C Functions Challenge</a>
+      <a href="#" data-topic="mathfunctions">C Math Functions</a>
+      <a href="#" data-topic="inlinefunctions">C Inline Functions</a>
+      <a href="#" data-topic="recursion">C Recursion</a>
+      <a href="#" data-topic="functionpointers">C Function Pointers</a>
+
+      <!-- C FILES -->
+      <div class="category-title">C FILES</div>
+      <a href="#" data-topic="createfiles">C Create Files</a>
+      <a href="#" data-topic="writetofiles">C Write To Files</a>
+      <a href="#" data-topic="readfiles">C Read Files</a>
+
+      <!-- C STRUCTURES -->
+      <div class="category-title">C STRUCTURES</div>
+      <a href="#" data-topic="structures">C Structures</a>
+      <a href="#" data-topic="structschallenge">C Structs Challenge</a>
+      <a href="#" data-topic="nestedstructures">C Nested Structures</a>
+      <a href="#" data-topic="structspointers">C Structs &amp; Pointers</a>
+      <a href="#" data-topic="unions">C Unions</a>
+      <a href="#" data-topic="typedef">C typedef</a>
+      <a href="#" data-topic="structpadding">C Struct Padding</a>
+
+      <!-- C ENUMS -->
+      <div class="category-title">C ENUMS</div>
+      <a href="#" data-topic="enums">C Enums</a>
+
+      <!-- C MEMORY -->
+      <div class="category-title">C MEMORY</div>
+      <a href="#" data-topic="memorymanagement">C Memory Management</a>
+
+      <!-- C ERRORS -->
+      <div class="category-title">C ERRORS</div>
+      <a href="#" data-topic="errors">C Errors</a>
+      <a href="#" data-topic="errorchallenge">C Error Challenge</a>
+      <a href="#" data-topic="debugging">C Debugging</a>
+      <a href="#" data-topic="null">C NULL</a>
+      <a href="#" data-topic="errorhandling">C Error Handling</a>
+      <a href="#" data-topic="inputvalidation">C Input Validation</a>
+
+      <!-- C MORE -->
+      <div class="category-title">C MORE</div>
+      <a href="#" data-topic="date">C Date</a>
+      <a href="#" data-topic="randomnumbers">C Random Numbers</a>
+      <a href="#" data-topic="macros">C Macros</a>
+      <a href="#" data-topic="organizecode">C Organize Code</a>
+      <a href="#" data-topic="storageclasses">C Storage Classes</a>
+      <a href="#" data-topic="bitwise">C Bitwise Operators</a>
+      <a href="#" data-topic="fixedwidth">C Fixed-width Integers</a>
+
+      <!-- C PROJECTS -->
+      <div class="category-title">C PROJECTS</div>
+      <a href="#" data-topic="projects">C Projects</a>
+    </div>
+  </section>
+
+  <!-- RIGHT CONTENT AREA (side‑by‑side) -->
+  <div class="content-area" id="contentArea">
+    <div id="dynamicContent">
+      <h2>👋 Hello Embedded Developer</h2>
+      <div class="content-body">
+        <div class="placeholder-message">
+          <p><strong>Select any topic</strong> from the left sidebar — its content appears right here, side‑by‑side.</p>
+          <p style="margin-top: 14px;">✨ <strong>Click any “C …”</strong> and watch the magic.</p>
+          <p style="margin-top: 8px; font-size: 0.95rem;">Each entry shows a clear explanation, example, or concept.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-     <p>Hello Embedded Systems Developer!👋<br>This page is currently in progress…  <br>Please stay tuned for awesome content coming soon!</p>
+
 <footer>
   <div class="footer-content">
-    <div class="footer-right">
-      <!-- AUTO-UPDATING COPYRIGHT YEAR -->
-      <p>&copy; <span id="copyright-year"></span> Electrons <sup>.e-</sup> Academy | Designed for future innovators</p>
-    </div>
+    <p>&copy; <span id="copyright-year"></span> Electrons <sup>.e-</sup> Academy &nbsp;|&nbsp; Designed for future innovators</p>
   </div>
 </footer>
 
-<!-- JAVASCRIPT TO AUTO-UPDATE THE YEAR -->
 <script>
-  // Get the current year automatically
-  const currentYear = new Date().getFullYear();
-  // Update the copyright year in the footer
-  document.getElementById('copyright-year').textContent = currentYear;
+  (function() {
+    // auto-update footer year
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+    // ----- DOM refs -----
+    const grid = document.getElementById('tutorialGrid');
+    const dynamicContent = document.getElementById('dynamicContent');
+
+    // ----- CONTENT LIBRARY (keyed by data-topic) -----
+    const contentMap = {
+      home: {
+        title: 'C HOME',
+        body: `<p><strong>Welcome to the C Tutorial!</strong> This is your launchpad for embedded C.</p>
+               <p>Use the sidebar to explore topics from syntax to memory management.</p>
+               <p>💡 Every topic shows a description and practical insight.</p>`
+      },
+      intro: {
+        title: 'C Intro',
+        body: `<p><strong>Introduction to C</strong> – Developed by Dennis Ritchie, C is a procedural language.</p>
+               <p>It powers embedded systems, OS kernels, and performance-critical applications.</p>`
+      },
+      getstarted: {
+        title: 'C Get Started',
+        body: `<p><strong>Getting Started</strong> – Install GCC and write your first program:</p>
+               <pre style="background:#eef2f7; padding:12px; border-radius:8px;"><code>#include &lt;stdio.h&gt;
+        int main() {
+          printf("Hello Embedded World!");
+          return 0;
+        }</code></pre>`
+      },
+      syntax: {
+        title: 'C Syntax',
+        body: `<p><strong>C Syntax</strong> – Every C program has <code>main()</code>, statements end with <code>;</code>.</p>
+               <p>Braces <code>{ }</code> define blocks.</p>`
+      },
+      output: {
+        title: 'C Output',
+        body: `<p><strong>Output</strong> – <code>printf()</code> is your friend.</p>
+               <p><code>printf("Value: %d", 42);</code> prints <code>Value: 42</code></p>`
+      },
+      comments: {
+        title: 'C Comments',
+        body: `<p><strong>Comments</strong> – <code>//</code> single line, <code>/* ... */</code> multi‑line.</p>`
+      },
+      variables: {
+        title: 'C Variables',
+        body: `<p><strong>Variables</strong> – <code>type name = value;</code></p>
+               <p><code>int age = 25; float pi = 3.14;</code></p>`
+      },
+      datatypes: {
+        title: 'C Data Types',
+        body: `<p><strong>Data Types</strong> – <code>int</code>, <code>float</code>, <code>double</code>, <code>char</code>.</p>
+               <p>Modifiers: <code>short</code>, <code>long</code>, <code>unsigned</code>.</p>`
+      },
+      typeconversion: {
+        title: 'C Type Conversion',
+        body: `<p><strong>Type Conversion</strong> – Implicit (automatic) and explicit (casting).</p>
+               <p><code>float x = (float) 5 / 2;  // 2.5</code></p>`
+      },
+      constants: {
+        title: 'C Constants',
+        body: `<p><strong>Constants</strong> – <code>const</code> or <code>#define</code>.</p>
+               <p><code>const double PI = 3.14159;</code></p>`
+      },
+      operators: {
+        title: 'C Operators',
+        body: `<p><strong>Operators</strong> – Arithmetic, relational, logical, bitwise.</p>
+               <p><code>+  -  *  /  %  &amp;  |  ^  ~  &lt;&lt;  &gt;&gt;</code></p>`
+      },
+      booleans: {
+        title: 'C Booleans',
+        body: `<p><strong>Booleans</strong> – Include <code>&lt;stdbool.h&gt;</code> for <code>bool</code>.</p>
+               <p><code>bool flag = true;</code></p>`
+      },
+      ifelse: {
+        title: 'C If...Else',
+        body: `<p><strong>If...Else</strong> – Conditional branching.</p>
+               <p><code>if (x &gt; 0) { ... } else { ... }</code></p>`
+      },
+      switch: {
+        title: 'C Switch',
+        body: `<p><strong>Switch</strong> – Multi‑way branch.</p>
+               <p><code>switch(day) { case 1: ... break; }</code></p>`
+      },
+      whileloop: {
+        title: 'C While Loop',
+        body: `<p><strong>While Loop</strong> – <code>while (condition) { ... }</code></p>`
+      },
+      forloop: {
+        title: 'C For Loop',
+        body: `<p><strong>For Loop</strong> – <code>for (init; cond; inc) { ... }</code></p>`
+      },
+      breakcontinue: {
+        title: 'C Break/Continue',
+        body: `<p><strong>Break &amp; Continue</strong> – <code>break</code> exits loop, <code>continue</code> skips iteration.</p>`
+      },
+      arrays: {
+        title: 'C Arrays',
+        body: `<p><strong>Arrays</strong> – <code>int arr[5] = {1,2,3,4,5};</code></p>`
+      },
+      strings: {
+        title: 'C Strings',
+        body: `<p><strong>Strings</strong> – <code>char name[] = "Embedded";</code> (null‑terminated).</p>`
+      },
+      userinput: {
+        title: 'C User Input',
+        body: `<p><strong>User Input</strong> – <code>scanf("%d", &amp;age);</code></p>`
+      },
+      memoryaddress: {
+        title: 'C Memory Address',
+        body: `<p><strong>Memory Address</strong> – <code>&amp;variable</code> gives address.</p>
+               <p><code>printf("%p", &amp;x);</code></p>`
+      },
+      pointers: {
+        title: 'C Pointers',
+        body: `<p><strong>Pointers</strong> – <code>int *ptr = &amp;var;</code></p>
+               <p>Pointers are essential for embedded hardware access.</p>`
+      },
+      // functions
+      functions: {
+        title: 'C Functions',
+        body: `<p><strong>Functions</strong> – <code>returnType name(params) { ... }</code></p>`
+      },
+      funcparams: {
+        title: 'C Function Parameters',
+        body: `<p><strong>Parameters</strong> – pass by value or by reference (pointers).</p>`
+      },
+      scope: {
+        title: 'C Scope',
+        body: `<p><strong>Scope</strong> – Local variables exist only inside their block.</p>`
+      },
+      funcdeclaration: {
+        title: 'C Function Declaration',
+        body: `<p><strong>Function Declaration</strong> – prototype before <code>main()</code>.</p>`
+      },
+      funcschallenge: {
+        title: 'C Functions Challenge',
+        body: `<p><strong>Challenge</strong> – Write a function <code>max(int a, int b)</code>.</p>`
+      },
+      mathfunctions: {
+        title: 'C Math Functions',
+        body: `<p><strong>Math</strong> – <code>#include &lt;math.h&gt;</code> for <code>sqrt()</code>, <code>pow()</code>.</p>`
+      },
+      inlinefunctions: {
+        title: 'C Inline Functions',
+        body: `<p><strong>Inline</strong> – <code>inline int square(int x) { return x*x; }</code></p>`
+      },
+      recursion: {
+        title: 'C Recursion',
+        body: `<p><strong>Recursion</strong> – a function that calls itself.</p>`
+      },
+      functionpointers: {
+        title: 'C Function Pointers',
+        body: `<p><strong>Function Pointers</strong> – <code>int (*funcPtr)(int,int) = &amp;sum;</code></p>`
+      },
+      // files
+      createfiles: {
+        title: 'C Create Files',
+        body: `<p><strong>Create</strong> – <code>FILE *f = fopen("file.txt", "w");</code></p>`
+      },
+      writetofiles: {
+        title: 'C Write To Files',
+        body: `<p><strong>Write</strong> – <code>fprintf(f, "data");</code></p>`
+      },
+      readfiles: {
+        title: 'C Read Files',
+        body: `<p><strong>Read</strong> – <code>fscanf(f, "%d", &amp;val);</code></p>`
+      },
+      // structures
+      structures: {
+        title: 'C Structures',
+        body: `<p><strong>Structures</strong> – <code>struct Person { char name[20]; int age; };</code></p>`
+      },
+      structschallenge: {
+        title: 'C Structs Challenge',
+        body: `<p><strong>Challenge</strong> – create a struct for a 2D point.</p>`
+      },
+      nestedstructures: {
+        title: 'C Nested Structures',
+        body: `<p><strong>Nested</strong> – struct inside struct.</p>`
+      },
+      structspointers: {
+        title: 'C Structs &amp; Pointers',
+        body: `<p><strong>Struct pointers</strong> – use <code>-></code> to access members.</p>`
+      },
+      unions: {
+        title: 'C Unions',
+        body: `<p><strong>Unions</strong> – share memory; only one member active at a time.</p>`
+      },
+      typedef: {
+        title: 'C typedef',
+        body: `<p><strong>typedef</strong> – create alias: <code>typedef struct { ... } Person;</code></p>`
+      },
+      structpadding: {
+        title: 'C Struct Padding',
+        body: `<p><strong>Padding</strong> – compiler may add padding for alignment.</p>`
+      },
+      enums: {
+        title: 'C Enums',
+        body: `<p><strong>Enums</strong> – <code>enum Color { RED, GREEN, BLUE };</code></p>`
+      },
+      memorymanagement: {
+        title: 'C Memory Management',
+        body: `<p><strong>Dynamic memory</strong> – <code>malloc()</code>, <code>calloc()</code>, <code>free()</code>.</p>`
+      },
+      errors: {
+        title: 'C Errors',
+        body: `<p><strong>Errors</strong> – compile‑time and runtime.</p>`
+      },
+      errorchallenge: {
+        title: 'C Error Challenge',
+        body: `<p><strong>Challenge</strong> – find the bug in a snippet.</p>`
+      },
+      debugging: {
+        title: 'C Debugging',
+        body: `<p><strong>Debugging</strong> – use <code>gdb</code> or print statements.</p>`
+      },
+      null: {
+        title: 'C NULL',
+        body: `<p><strong>NULL</strong> – <code>#define NULL ((void*)0)</code>.</p>`
+      },
+      errorhandling: {
+        title: 'C Error Handling',
+        body: `<p><strong>Error handling</strong> – check return values and <code>errno</code>.</p>`
+      },
+      inputvalidation: {
+        title: 'C Input Validation',
+        body: `<p><strong>Input Validation</strong> – always validate to avoid overflows.</p>`
+      },
+      date: {
+        title: 'C Date',
+        body: `<p><strong>Date &amp; Time</strong> – <code>#include &lt;time.h&gt;</code></p>`
+      },
+      randomnumbers: {
+        title: 'C Random Numbers',
+        body: `<p><strong>Random</strong> – <code>rand()</code> and <code>srand()</code>.</p>`
+      },
+      macros: {
+        title: 'C Macros',
+        body: `<p><strong>Macros</strong> – <code>#define PI 3.14</code></p>`
+      },
+      organizecode: {
+        title: 'C Organize Code',
+        body: `<p><strong>Organize</strong> – split into <code>.h</code> and <code>.c</code> files.</p>`
+      },
+      storageclasses: {
+        title: 'C Storage Classes',
+        body: `<p><strong>Storage Classes</strong> – <code>auto</code>, <code>register</code>, <code>static</code>, <code>extern</code>.</p>`
+      },
+      bitwise: {
+        title: 'C Bitwise Operators',
+        body: `<p><strong>Bitwise</strong> – <code>&amp;  |  ^  ~  &lt;&lt;  &gt;&gt;</code></p>`
+      },
+      fixedwidth: {
+        title: 'C Fixed‑width Integers',
+        body: `<p><strong>Fixed‑width</strong> – <code>#include &lt;stdint.h&gt;</code> for <code>int32_t</code> etc.</p>`
+      },
+      projects: {
+        title: 'C Projects',
+        body: `<p><strong>Projects</strong> – build a temperature logger or a simple shell.</p>`
+      }
+    };
+
+    // ----- helper: render topic -----
+    function renderTopic(topicKey) {
+      const data = contentMap[topicKey];
+      if (data) {
+        dynamicContent.innerHTML = `
+          <h2>${data.title}</h2>
+          <div class="content-body">${data.body}</div>
+        `;
+      } else {
+        // fallback
+        dynamicContent.innerHTML = `
+          <h2>📘 ${topicKey ? topicKey.charAt(0).toUpperCase() + topicKey.slice(1) : 'Topic'}</h2>
+          <div class="content-body">
+            <div class="placeholder-message">
+              <p>Content for "<strong>${topicKey || 'this topic'}</strong>" is being prepared.</p>
+              <p>Stay tuned for more embedded insights.</p>
+            </div>
+          </div>
+        `;
+      }
+
+      // update active class on sidebar links
+      const allLinks = grid.querySelectorAll('a[data-topic]');
+      allLinks.forEach(link => {
+        link.classList.remove('active-item');
+        if (link.getAttribute('data-topic') === topicKey) {
+          link.classList.add('active-item');
+        }
+      });
+    }
+
+    // ----- attach click listeners to all topic links -----
+    const allTopicLinks = grid.querySelectorAll('a[data-topic]');
+    allTopicLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const topic = this.getAttribute('data-topic');
+        if (topic) {
+          renderTopic(topic);
+        }
+      });
+    });
+
+    // ----- on load: show 'home' content by default (or from URL hash) -----
+    const hash = window.location.hash.replace('#', '') || 'home';
+    const initialTopic = contentMap[hash] ? hash : 'home';
+    renderTopic(initialTopic);
+  })();
 </script>
+
 </body>
 </html>
-
-
