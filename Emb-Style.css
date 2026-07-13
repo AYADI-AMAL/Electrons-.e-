@@ -1,115 +1,243 @@
-:root {
-  --dark-blue: #1a2b4c;
-  --mustard-yellow: #f1c40f;
-  --white: #ffffff;
-  --light-grey: #dcdcdc;
-}
+    :root {
+      --dark-blue: #1a2b4c;
+      --mustard-yellow: #f1c40f;
+      --white: #ffffff;
+      --light-grey: #dcdcdc;
+    }
 
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--white);
-  color: var(--dark-blue);
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-header {
-  background-color: var(--dark-blue);
-  padding: 1rem;
-  text-align: center;
-  color: var(--mustard-yellow);
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--white);
+      color: var(--dark-blue);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-p {
-  margin: 20px;
-}
+    /* ----- HEADER ----- */
+    header {
+      background-color: var(--dark-blue);
+      padding: 1rem 1.5rem;
+      text-align: center;
+      color: var(--mustard-yellow);
+    }
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-top: 0.2rem;
+    }
 
-/* Main container with sidebar layout */
-.main-container {
-  display: flex;
-  gap: 20px;
-  margin: 20px;
-}
+    /* ----- MAIN LAYOUT: SIDEBAR + CONTENT (side‑by‑side) ----- */
+    .main-container {
+      display: flex;
+      flex: 1;
+      gap: 24px;
+      margin: 24px 28px;
+      align-items: flex-start;
+      min-height: 70vh;
+    }
 
-/* C Tutorial Section - Left Sidebar */
-.c-tutorial-section {
-  flex: 0 0 280px;
-  padding: 20px;
-  border: 2px solid var(--dark-blue);
-  border-radius: 10px;
-  height: fit-content;
-  max-height: 80vh;
-  overflow-y: auto;
-}
+    /* --- LEFT SIDEBAR (C tutorial list) --- */
+    .c-tutorial-section {
+      flex: 0 0 290px;
+      background: #f8faff;
+      border: 2px solid var(--dark-blue);
+      border-radius: 14px;
+      padding: 18px 12px 18px 18px;
+      max-height: 82vh;
+      overflow-y: auto;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 20px;
+      align-self: flex-start;
+    }
 
-.c-tutorial-section h2 {
-  color: var(--dark-blue);
-  margin-top: 0;
-  text-align: center;
-  border-bottom: 2px solid var(--mustard-yellow);
-  padding-bottom: 10px;
-}
+    .c-tutorial-section h2 {
+      color: var(--dark-blue);
+      text-align: center;
+      border-bottom: 3px solid var(--mustard-yellow);
+      padding-bottom: 12px;
+      margin: 0 0 12px 0;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
 
-.c-tutorial-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
+    .c-tutorial-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-.c-tutorial-grid .category-title {
-  font-weight: bold;
-  color: var(--dark-blue);
-  padding: 10px 12px 5px 12px;
-  margin-top: 10px;
-  border-bottom: 1px solid var(--mustard-yellow);
-  font-size: 0.9em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+    .c-tutorial-grid .category-title {
+      font-weight: 700;
+      color: var(--dark-blue);
+      padding: 14px 8px 6px 12px;
+      margin-top: 12px;
+      border-bottom: 1px solid var(--mustard-yellow);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      opacity: 0.8;
+    }
+    .c-tutorial-grid .category-title:first-of-type {
+      margin-top: 0;
+    }
 
-.c-tutorial-grid .category-title:first-of-type {
-  margin-top: 0;
-}
+    .c-tutorial-grid a {
+      color: var(--dark-blue);
+      text-decoration: none;
+      display: block;
+      padding: 6px 12px 6px 22px;
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: transparent;
+    }
 
-.c-tutorial-grid a {
-  color: var(--dark-blue);
-  text-decoration: none;
-  display: block;
-  padding: 6px 12px 6px 25px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  border-left: 3px solid transparent;
-  font-size: 0.95em;
-}
+    .c-tutorial-grid a:hover {
+      background-color: var(--mustard-yellow);
+      color: var(--dark-blue);
+      border-left: 3px solid var(--dark-blue);
+      padding-left: 28px;
+    }
 
-.c-tutorial-grid a:hover {
-  background-color: var(--mustard-yellow);
-  color: var(--dark-blue);
-  border-left: 3px solid var(--dark-blue);
-  padding-left: 30px;
-}
+    /* home link special */
+    .c-tutorial-grid .home-link {
+      font-weight: 600;
+      background-color: var(--dark-blue);
+      color: var(--mustard-yellow);
+      border-left: 3px solid var(--mustard-yellow);
+      padding-left: 14px;
+    }
+    .c-tutorial-grid .home-link:hover {
+      background-color: var(--mustard-yellow);
+      color: var(--dark-blue);
+      border-left: 3px solid var(--dark-blue);
+      padding-left: 20px;
+    }
 
-.c-tutorial-grid .home-link {
-  font-weight: bold;
-  background-color: var(--dark-blue);
-  color: var(--mustard-yellow);
-  border-left: 3px solid var(--mustard-yellow);
-  padding-left: 12px;
-}
+    /* active item (highlighted) */
+    .c-tutorial-grid a.active-item {
+      background-color: var(--mustard-yellow);
+      color: var(--dark-blue);
+      border-left: 4px solid var(--dark-blue);
+      padding-left: 28px;
+      font-weight: 600;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
 
-.c-tutorial-grid .home-link:hover {
-  background-color: var(--mustard-yellow);
-  color: var(--dark-blue);
-  border-left: 3px solid var(--dark-blue);
-  padding-left: 18px;
-}
+    /* --- RIGHT CONTENT AREA (side‑by‑side) --- */
+    .content-area {
+      flex: 1;
+      background: #ffffff;
+      border: 2px solid var(--dark-blue);
+      border-radius: 14px;
+      padding: 28px 32px;
+      min-height: 60vh;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+      transition: background 0.1s;
+      display: flex;
+      flex-direction: column;
+    }
 
-/* Content area next to sidebar */
-.content-area {
-  flex: 1;
-}
-footer {
-  background-color: var(--dark-blue);
-  color: var(--white);
-  text-align: center;
-  padding: 1rem;
-}
+    .content-area h2 {
+      margin-top: 0;
+      color: var(--dark-blue);
+      border-bottom: 3px solid var(--mustard-yellow);
+      padding-bottom: 12px;
+      font-size: 1.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    .content-area .content-body {
+      font-size: 1.08rem;
+      line-height: 1.7;
+      padding-top: 12px;
+      flex: 1;
+    }
+    .content-area .content-body p {
+      margin: 0.8rem 0;
+    }
+    .content-area .content-body code {
+      background: #eef2f7;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #1a2b4c;
+    }
+    .content-area .placeholder-message {
+      background: #f2f5fc;
+      padding: 1.8rem 2rem;
+      border-radius: 12px;
+      border-left: 6px solid var(--mustard-yellow);
+      margin: 0.5rem 0;
+    }
+
+    /* ----- FOOTER ----- */
+    footer {
+      background-color: var(--dark-blue);
+      color: var(--white);
+      text-align: center;
+      padding: 1.2rem;
+      margin-top: 20px;
+      border-top: 3px solid var(--mustard-yellow);
+    }
+    footer .footer-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    footer sup {
+      font-size: 0.7rem;
+    }
+
+    /* ----- SCROLLBAR STYLING (optional) ----- */
+    .c-tutorial-section::-webkit-scrollbar {
+      width: 5px;
+    }
+    .c-tutorial-section::-webkit-scrollbar-track {
+      background: #e6eaf0;
+      border-radius: 8px;
+    }
+    .c-tutorial-section::-webkit-scrollbar-thumb {
+      background: var(--dark-blue);
+      border-radius: 8px;
+    }
+
+    /* responsive: stack on narrow screens */
+    @media (max-width: 800px) {
+      .main-container {
+        flex-direction: column;
+        margin: 16px;
+        gap: 18px;
+      }
+      .c-tutorial-section {
+        flex: auto;
+        width: 100%;
+        max-height: 55vh;
+        position: static;
+        top: 0;
+        padding: 16px;
+      }
+      .content-area {
+        min-height: 40vh;
+        padding: 20px;
+      }
+    }
