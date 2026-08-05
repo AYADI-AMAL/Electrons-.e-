@@ -1,4 +1,4 @@
-// script.js - Embedded Systems C Tutorial Interactive Content
+// script.js - Embedded Systems C Tutorial Interactive Content + Chatbot
 
 (function() {
     'use strict';
@@ -111,7 +111,6 @@ int main() {
             body: `<p><strong>Pointers</strong> – <code>int *ptr = &amp;var;</code></p>
                    <p>Pointers are essential for embedded hardware access.</p>`
         },
-        // functions
         functions: {
             title: 'C Functions',
             body: `<p><strong>Functions</strong> – <code>returnType name(params) { ... }</code></p>`
@@ -148,7 +147,6 @@ int main() {
             title: 'C Function Pointers',
             body: `<p><strong>Function Pointers</strong> – <code>int (*funcPtr)(int,int) = &amp;sum;</code></p>`
         },
-        // files
         createfiles: {
             title: 'C Create Files',
             body: `<p><strong>Create</strong> – <code>FILE *f = fopen("file.txt", "w");</code></p>`
@@ -161,7 +159,6 @@ int main() {
             title: 'C Read Files',
             body: `<p><strong>Read</strong> – <code>fscanf(f, "%d", &amp;val);</code></p>`
         },
-        // structures
         structures: {
             title: 'C Structures',
             body: `<p><strong>Structures</strong> – <code>struct Person { char name[20]; int age; };</code></p>`
@@ -265,7 +262,6 @@ int main() {
                 <div class="content-body">${data.body}</div>
             `;
         } else {
-            // fallback (should not happen for valid keys)
             dynamicContent.innerHTML = `
                 <h2>📘 ${topicKey ? topicKey.charAt(0).toUpperCase() + topicKey.slice(1) : 'Topic'}</h2>
                 <div class="content-body">
@@ -277,7 +273,7 @@ int main() {
             `;
         }
 
-        // update active class on sidebar links (only for non‑home items)
+        // update active class on sidebar links
         const allLinks = grid.querySelectorAll('a[data-topic]');
         allLinks.forEach(link => {
             link.classList.remove('active-item');
@@ -291,7 +287,7 @@ int main() {
     const topicLinks = grid.querySelectorAll('a[data-topic]');
     topicLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault(); // prevent hash change
+            e.preventDefault();
             const topic = this.getAttribute('data-topic');
             if (topic && contentMap[topic]) {
                 renderTopic(topic);
@@ -311,90 +307,92 @@ int main() {
     if (hash && contentMap[hash]) {
         renderTopic(hash);
     } else {
-        // default: keep the placeholder, ensure no active class
         const allLinks = grid.querySelectorAll('a[data-topic]');
         allLinks.forEach(link => link.classList.remove('active-item'));
     }
- // --- chat elements ---
-  const chatWindow = document.getElementById('chatWindow');
-  const chatToggle = document.getElementById('chatToggleBtn');
-  const closeBtn = document.getElementById('closeChatBtn');
-  const chatInput = document.getElementById('chatInput');
-  const sendBtn = document.getElementById('sendChatBtn');
-  const messages = document.getElementById('chatMessages');
 
-  // --- simple bot responses ---
-  function botReply(userMsg) {
-    const lower = userMsg.toLowerCase();
-    if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
-      return 'Hello! 👋 How can I help you today?';
-    } else if (lower.includes('course') || lower.includes('learn') || lower.includes('study')) {
-      return 'We offer Embedded Systems and Full‑Stack Development. More content coming soon!';
-    } else if (lower.includes('embedded') || lower.includes('micro') || lower.includes('stm32')) {
-      return 'Embedded Systems covers C, STM32, RTOS, sensors, and IoT. Ask for details!';
-    } else if (lower.includes('full') || lower.includes('stack') || lower.includes('frontend')) {
-      return 'Full‑Stack: HTML, CSS, JS, Node.js, React, and databases. Stay tuned!';
-    } else if (lower.includes('thanks') || lower.includes('thank')) {
-      return 'You\'re welcome! 😊 Anything else?';
-    } else if (lower.includes('bye') || lower.includes('goodbye')) {
-      return 'Goodbye! See you soon at Electrons .e- Academy.';
-    } else {
-      return 'Great question! I\'m still learning. Please contact our team for more info.';
+    // ================================================================
+    //  CHATBOT INTEGRATION (added inside the same IIFE)
+    // ================================================================
+    const chatWindow = document.getElementById('chatWindow');
+    const chatToggle = document.getElementById('chatToggleBtn');
+    const closeBtn = document.getElementById('closeChatBtn');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendChatBtn');
+    const messages = document.getElementById('chatMessages');
+
+    // --- simple bot responses ---
+    function botReply(userMsg) {
+        const lower = userMsg.toLowerCase();
+        if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
+            return 'Hello! 👋 How can I help you today?';
+        } else if (lower.includes('course') || lower.includes('learn') || lower.includes('study')) {
+            return 'We offer Embedded Systems and Full‑Stack Development. More content coming soon!';
+        } else if (lower.includes('embedded') || lower.includes('micro') || lower.includes('stm32')) {
+            return 'Embedded Systems covers C, STM32, RTOS, sensors, and IoT. Ask for details!';
+        } else if (lower.includes('full') || lower.includes('stack') || lower.includes('frontend')) {
+            return 'Full‑Stack: HTML, CSS, JS, Node.js, React, and databases. Stay tuned!';
+        } else if (lower.includes('thanks') || lower.includes('thank')) {
+            return 'You\'re welcome! 😊 Anything else?';
+        } else if (lower.includes('bye') || lower.includes('goodbye')) {
+            return 'Goodbye! See you soon at Electrons .e- Academy.';
+        } else {
+            return 'Great question! I\'m still learning. Please contact our team for more info.';
+        }
     }
-  }
 
-  // --- add message to chat ---
-  function addMessage(text, sender) {
-    const div = document.createElement('div');
-    div.className = 'msg ' + sender;
-    div.textContent = text;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  // --- handle send ---
-  function handleSend() {
-    const raw = chatInput.value.trim();
-    if (!raw) return;
-    addMessage(raw, 'user');
-    chatInput.value = '';
-
-    // bot response after a tiny delay
-    setTimeout(() => {
-      const reply = botReply(raw);
-      addMessage(reply, 'bot');
-    }, 280);
-  }
-
-  // --- event listeners ---
-  if (sendBtn) sendBtn.addEventListener('click', handleSend);
-  if (chatInput) {
-    chatInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') handleSend();
-    });
-  }
-
-  // --- open/close chat ---
-  if (chatToggle) {
-    chatToggle.addEventListener('click', () => {
-      chatWindow.classList.toggle('open');
-    });
-  }
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      chatWindow.classList.remove('open');
-    });
-  }
-
-  // --- optional: seed an extra message after a moment ---
-  setTimeout(() => {
-    if (messages && messages.children.length === 1) {
-      const extra = document.createElement('div');
-      extra.className = 'msg bot';
-      extra.textContent = '💡 Try asking: "Tell me about embedded" or "courses"';
-      messages.appendChild(extra);
+    // --- add message to chat ---
+    function addMessage(text, sender) {
+        if (!messages) return;
+        const div = document.createElement('div');
+        div.className = 'msg ' + sender;
+        div.textContent = text;
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
     }
-  }, 600);
 
-})();
-})();
+    // --- handle send ---
+    function handleSend() {
+        if (!chatInput) return;
+        const raw = chatInput.value.trim();
+        if (!raw) return;
+        addMessage(raw, 'user');
+        chatInput.value = '';
+
+        setTimeout(() => {
+            const reply = botReply(raw);
+            addMessage(reply, 'bot');
+        }, 280);
+    }
+
+    // --- event listeners (only if elements exist) ---
+    if (sendBtn) sendBtn.addEventListener('click', handleSend);
+    if (chatInput) {
+        chatInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') handleSend();
+        });
+    }
+
+    // --- open/close chat ---
+    if (chatToggle) {
+        chatToggle.addEventListener('click', function() {
+            if (chatWindow) chatWindow.classList.toggle('open');
+        });
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            if (chatWindow) chatWindow.classList.remove('open');
+        });
+    }
+
+    // --- seed an extra message after a moment ---
+    setTimeout(function() {
+        if (messages && messages.children.length === 1) {
+            const extra = document.createElement('div');
+            extra.className = 'msg bot';
+            extra.textContent = '💡 Try asking: "Tell me about embedded" or "courses"';
+            messages.appendChild(extra);
+        }
+    }, 600);
+
+})(); // <-- IIFE properly closed
