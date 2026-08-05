@@ -315,5 +315,86 @@ int main() {
         const allLinks = grid.querySelectorAll('a[data-topic]');
         allLinks.forEach(link => link.classList.remove('active-item'));
     }
+ // --- chat elements ---
+  const chatWindow = document.getElementById('chatWindow');
+  const chatToggle = document.getElementById('chatToggleBtn');
+  const closeBtn = document.getElementById('closeChatBtn');
+  const chatInput = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('sendChatBtn');
+  const messages = document.getElementById('chatMessages');
 
+  // --- simple bot responses ---
+  function botReply(userMsg) {
+    const lower = userMsg.toLowerCase();
+    if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
+      return 'Hello! 👋 How can I help you today?';
+    } else if (lower.includes('course') || lower.includes('learn') || lower.includes('study')) {
+      return 'We offer Embedded Systems and Full‑Stack Development. More content coming soon!';
+    } else if (lower.includes('embedded') || lower.includes('micro') || lower.includes('stm32')) {
+      return 'Embedded Systems covers C, STM32, RTOS, sensors, and IoT. Ask for details!';
+    } else if (lower.includes('full') || lower.includes('stack') || lower.includes('frontend')) {
+      return 'Full‑Stack: HTML, CSS, JS, Node.js, React, and databases. Stay tuned!';
+    } else if (lower.includes('thanks') || lower.includes('thank')) {
+      return 'You\'re welcome! 😊 Anything else?';
+    } else if (lower.includes('bye') || lower.includes('goodbye')) {
+      return 'Goodbye! See you soon at Electrons .e- Academy.';
+    } else {
+      return 'Great question! I\'m still learning. Please contact our team for more info.';
+    }
+  }
+
+  // --- add message to chat ---
+  function addMessage(text, sender) {
+    const div = document.createElement('div');
+    div.className = 'msg ' + sender;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  // --- handle send ---
+  function handleSend() {
+    const raw = chatInput.value.trim();
+    if (!raw) return;
+    addMessage(raw, 'user');
+    chatInput.value = '';
+
+    // bot response after a tiny delay
+    setTimeout(() => {
+      const reply = botReply(raw);
+      addMessage(reply, 'bot');
+    }, 280);
+  }
+
+  // --- event listeners ---
+  if (sendBtn) sendBtn.addEventListener('click', handleSend);
+  if (chatInput) {
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleSend();
+    });
+  }
+
+  // --- open/close chat ---
+  if (chatToggle) {
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('open');
+    });
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      chatWindow.classList.remove('open');
+    });
+  }
+
+  // --- optional: seed an extra message after a moment ---
+  setTimeout(() => {
+    if (messages && messages.children.length === 1) {
+      const extra = document.createElement('div');
+      extra.className = 'msg bot';
+      extra.textContent = '💡 Try asking: "Tell me about embedded" or "courses"';
+      messages.appendChild(extra);
+    }
+  }, 600);
+
+})();
 })();
