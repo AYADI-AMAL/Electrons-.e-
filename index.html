@@ -98,7 +98,26 @@
     </div>
   </div>
 </footer>
+<!-- ===== CHAT BOT (floating) ===== -->
+<div class="chat-float">
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <span><i class="fas fa-robot" style="margin-right:6px;"></i> .e- Bot</span>
+      <button id="closeChatBtn" aria-label="Close chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg bot">👋 Hi! I'm your Electron assistant. Ask me anything about courses or embedded systems.</div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+      <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
 
+  <button class="chat-toggle" id="chatToggleBtn">
+    <i class="fas fa-comment-dots"></i> Chat
+  </button>
+</div>
 <!-- JAVASCRIPT TO AUTO-UPDATE THE YEAR -->
 <script>
   // Get the current year automatically
