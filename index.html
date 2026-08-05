@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Electrons .e- Academy</title>
- <meta name="author" content="Ing.Ayadi Amal">
- <meta name="description" content="Electrons.e- Embedded Systems & Full-Stack Developement Academy">
+  <meta name="author" content="Ing.Ayadi Amal">
+  <meta name="description" content="Electrons.e- Embedded Systems & Full-Stack Developement Academy">
   <meta name="keywords" content="HTML,CSS,JavaScript,STM32,iot,cloud,système embarqué,ESP32,Python,LoraWAN">
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/x-icon" href="image\Diploma-in-Embedded-System-1.ico">
@@ -32,7 +32,7 @@
 
 <section class="content-section">
  <h2>Our Popular Courses</h2>
-<div id=Courses class="courses">
+<div id="Courses" class="courses">
   <a href="Embedded_Systems.html" class="card">
     <img src="image/Embedded_Systems.png" alt="Embedded Systems Course">
     <h3>Embedded Systems</h3>
@@ -98,6 +98,7 @@
     </div>
   </div>
 </footer>
+
 <!-- ===== CHAT BOT (floating) ===== -->
 <div class="chat-float">
   <div class="chat-window" id="chatWindow">
@@ -118,13 +119,15 @@
     <i class="fas fa-comment-dots"></i> Chat
   </button>
 </div>
-<!-- JAVASCRIPT TO AUTO-UPDATE THE YEAR -->
+
+<!-- ===== SCRIPTS ===== -->
+<!-- 1. Auto-update year script (simple) -->
 <script>
-  // Get the current year automatically
-  const currentYear = new Date().getFullYear();
-  // Update the copyright year in the footer
-  document.getElementById('copyright-year').textContent = currentYear;
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
 </script>
+
+<!-- 2. Main script with chatbot functionality -->
+<script src="script.js"></script>
 
 </body>
 </html>
