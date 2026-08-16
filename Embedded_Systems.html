@@ -1,131 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded_Systems</title>
-    <link rel="stylesheet" href="Emb-Style.css" />
-    <link rel="icon" type="image/x-icon" href="image/Diploma-in-Embedded-System-1.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedded C — Beginner's Course</title>
+<link rel="stylesheet" href="styles-beginners.css">
 </head>
 <body>
-<header>
-  <h1>Electrons <sup>.e-</sup> Academy</h1>
-  <p>Master Embedded Systems Development</p>
-</header>
-<div class="main-container">
-  <!-- LEFT SIDEBAR : C Tutorial list -->
-  <section class="c-tutorial-section">
-    <h2>C TUTORIAL</h2>
-    <div class="c-tutorial-grid" id="tutorialGrid">
-      <!-- HOME is a REAL LINK: goes to https://ayadi-amal.github.io/Electrons-.e-/ -->
-      <a href="https://ayadi-amal.github.io/Electrons-.e-/" class="home-link">HOME</a>
+<div class="app">
 
-      <!-- all other items are data‑topic driven (no href) -->
-      <a href="#" data-topic="intro">C Intro</a>
-      <a href="#" data-topic="getstarted">C Get Started</a>
-      <a href="#" data-topic="syntax">C Syntax</a>
-      <a href="#" data-topic="output">C Output</a>
-      <a href="#" data-topic="comments">C Comments</a>
-      <a href="#" data-topic="variables">C Variables</a>
-      <a href="#" data-topic="datatypes">C Data Types</a>
-      <a href="#" data-topic="typeconversion">C Type Conversion</a>
-      <a href="#" data-topic="constants">C Constants</a>
-      <a href="#" data-topic="operators">C Operators</a>
-      <a href="#" data-topic="booleans">C Booleans</a>
-      <a href="#" data-topic="ifelse">C If...Else</a>
-      <a href="#" data-topic="switch">C Switch</a>
-      <a href="#" data-topic="whileloop">C While Loop</a>
-      <a href="#" data-topic="forloop">C For Loop</a>
-      <a href="#" data-topic="breakcontinue">C Break/Continue</a>
-      <a href="#" data-topic="arrays">C Arrays</a>
-      <a href="#" data-topic="strings">C Strings</a>
-      <a href="#" data-topic="userinput">C User Input</a>
-      <a href="#" data-topic="memoryaddress">C Memory Address</a>
-      <a href="#" data-topic="pointers">C Pointers</a>
-
-      <!-- C FUNCTIONS -->
-      <div class="category-title">C FUNCTIONS</div>
-      <a href="#" data-topic="functions">C Functions</a>
-      <a href="#" data-topic="funcparams">C Function Parameters</a>
-      <a href="#" data-topic="scope">C Scope</a>
-      <a href="#" data-topic="funcdeclaration">C Function Declaration</a>
-      <a href="#" data-topic="funcschallenge">C Functions Challenge</a>
-      <a href="#" data-topic="mathfunctions">C Math Functions</a>
-      <a href="#" data-topic="inlinefunctions">C Inline Functions</a>
-      <a href="#" data-topic="recursion">C Recursion</a>
-      <a href="#" data-topic="functionpointers">C Function Pointers</a>
-
-      <!-- C FILES -->
-      <div class="category-title">C FILES</div>
-      <a href="#" data-topic="createfiles">C Create Files</a>
-      <a href="#" data-topic="writetofiles">C Write To Files</a>
-      <a href="#" data-topic="readfiles">C Read Files</a>
-
-      <!-- C STRUCTURES -->
-      <div class="category-title">C STRUCTURES</div>
-      <a href="#" data-topic="structures">C Structures</a>
-      <a href="#" data-topic="structschallenge">C Structs Challenge</a>
-      <a href="#" data-topic="nestedstructures">C Nested Structures</a>
-      <a href="#" data-topic="structspointers">C Structs &amp; Pointers</a>
-      <a href="#" data-topic="unions">C Unions</a>
-      <a href="#" data-topic="typedef">C typedef</a>
-      <a href="#" data-topic="structpadding">C Struct Padding</a>
-
-      <!-- C ENUMS -->
-      <div class="category-title">C ENUMS</div>
-      <a href="#" data-topic="enums">C Enums</a>
-
-      <!-- C MEMORY -->
-      <div class="category-title">C MEMORY</div>
-      <a href="#" data-topic="memorymanagement">C Memory Management</a>
-
-      <!-- C ERRORS -->
-      <div class="category-title">C ERRORS</div>
-      <a href="#" data-topic="errors">C Errors</a>
-      <a href="#" data-topic="errorchallenge">C Error Challenge</a>
-      <a href="#" data-topic="debugging">C Debugging</a>
-      <a href="#" data-topic="null">C NULL</a>
-      <a href="#" data-topic="errorhandling">C Error Handling</a>
-      <a href="#" data-topic="inputvalidation">C Input Validation</a>
-
-      <!-- C MORE -->
-      <div class="category-title">C MORE</div>
-      <a href="#" data-topic="date">C Date</a>
-      <a href="#" data-topic="randomnumbers">C Random Numbers</a>
-      <a href="#" data-topic="macros">C Macros</a>
-      <a href="#" data-topic="organizecode">C Organize Code</a>
-      <a href="#" data-topic="storageclasses">C Storage Classes</a>
-      <a href="#" data-topic="bitwise">C Bitwise Operators</a>
-      <a href="#" data-topic="fixedwidth">C Fixed-width Integers</a>
-
-      <!-- C PROJECTS -->
-      <div class="category-title">C PROJECTS</div>
-      <a href="#" data-topic="projects">C Projects</a>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="chip">µC</div>
+      <div class="brand-text"><b>Embedded C</b>beginner's course</div>
     </div>
-  </section>
+    <button class="navToggle" id="navToggle">☰ Contents</button>
+    <nav>
+      <ol>
+        <li><a href="#intro">What Is Embedded C?</a></li>
+        <li><a href="#chip">What Is a Microcontroller?</a></li>
+        <li><a href="#first">Your First Program</a></li>
+        <li><a href="#variables">Variables &amp; Data Types</a></li>
+        <li><a href="#operators">Basic Syntax &amp; Operators</a></li>
+        <li><a href="#decisions">Making Decisions</a></li>
+        <li><a href="#loops">Repeating Things: Loops</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#pointers">Pointers, Gently</a></li>
+        <li><a href="#arrays">Arrays &amp; Strings</a></li>
+        <li><a href="#structs">Structs: Grouping Data</a></li>
+        <li><a href="#bits">Bits, Bytes &amp; Binary</a></li>
+        <li><a href="#hardware">Talking to Hardware</a></li>
+        <li><a href="#project">First Project: Blink an LED</a></li>
+        <li><a href="#next">What to Learn Next</a></li>
+        <li><a href="#glossary">Glossary</a></li>
+      </ol>
+    </nav>
+  </aside>
 
-  <!-- RIGHT CONTENT AREA (side‑by‑side) -->
-  <div class="content-area" id="contentArea">
-    <div id="dynamicContent">
-      <!-- initial state: default message (no home content) -->
-      <h2>👋 Hello Embedded Developer</h2>
-      <div class="content-body">
-        <div class="placeholder-message">
-          <p><strong>Select any topic</strong> from the left sidebar — its content appears right here, side‑by‑side.</p>
-          <p style="margin-top: 14px;">✨ <strong>Click any "C …"</strong> and watch the magic.</p>
-          <p style="margin-top: 8px; font-size: 0.95rem;">Each entry shows a clear explanation, example, or concept.</p>
-        </div>
+  <main>
+    <div class="hero">
+      <div class="badge">beginner edition · no prior experience needed</div>
+      <div class="eyebrow">// bare-metal / microcontroller programming</div>
+      <h1>Embedded C for absolute beginners</h1>
+      <p>You already know what a light switch does. By the end of this course you'll know how to write the code that <em>is</em> the switch — turning real hardware on and off with a language that talks straight to the chip. We'll go slow, explain every term the first time it shows up, and build toward one real project: blinking an LED.</p>
+      <div class="reg" aria-hidden="true">
+        <div class="bit">0<small>pin 0</small></div>
+        <div class="bit on">1<small>pin 1</small></div>
+        <div class="bit">0<small>pin 2</small></div>
+        <div class="bit">0<small>pin 3</small></div>
       </div>
+      <div class="reg-caption">This is a preview: four wires, one of them "on." By section 12 you'll know exactly what that means.</div>
     </div>
-  </div>
-</div>
-<p style="padding: 1em;">Hello!👋<br>This page is currently in progress…  <br>Please stay tuned for awesome content coming soon!</p>
-<footer>
-  <div class="footer-content">
-    <p>&copy; <span id="copyright-year"></span> Electrons <sup>.e-</sup> Academy &nbsp;|&nbsp; Designed for future innovators</p>
-  </div>
-</footer>
 
-<script src="script.js"></script>
+    <!-- 1 -->
+    <section id="intro">
+      <h2><span class="num">01</span> What Is Embedded C?</h2>
+      <p class="lede">The same C language you'd learn anywhere — just aimed at tiny computers instead of laptops.</p>
+      <p>"Embedded" just means the computer is <em>built into</em> something else: a thermostat, a washing machine, a toy, a car's dashboard. These tiny computers are called <b>microcontrollers</b>, and C is the most common language for programming them, because it's small, fast, and lets you control hardware very precisely.</p>
+      <p>The good news: the C syntax itself — variables, loops, functions — is identical to C anywhere else. What's different is the environment around it:</p>
+      <ul>
+        <li>There's usually no operating system. Your program <em>is</em> the entire thing running on the chip.</li>
+        <li>Memory is small — sometimes just a few thousand bytes, not gigabytes.</li>
+        <li>You often turn real things on and off: LEDs, motors, screens, sensors.</li>
+      </ul>
+      <div class="note"><b>Don't worry</b> If terms like "memory," "byte," or "register" feel fuzzy right now, that's normal — we define each one plainly the first time it comes up, and there's a glossary at the end you can jump back to any time.</div>
+    </section>
+
+    <!-- 2 -->
+    <section id="chip">
+      <h2><span class="num">02</span> What Is a Microcontroller?</h2>
+      <p class="lede">A whole (tiny) computer on one chip.</p>
+      <p>A <b>microcontroller</b> is a single small chip that contains a processor (the part that runs your code), a little memory, and a set of pins — the little metal legs on the chip — that connect to the outside world. Some pins can be told "go high" (output electricity) or asked "are you high or low right now?" (read electricity). That's how code touches reality: by controlling voltage on a pin.</p>
+      <p>Popular examples you'll see mentioned around this topic: Arduino boards (which use microcontrollers from Atmel/Microchip), STM32 boards (ARM Cortex-M chips), and ESP32 boards. You don't need one to follow this course, but everything here is written so it transfers directly once you do.</p>
+      <div class="note"><b>Analogy</b> Think of a microcontroller as a very small, very literal assistant. It has no imagination — it will do exactly what your code says, instruction by instruction, forever, starting the moment it gets power.</div>
+    </section>
+
+    <!-- 3 -->
+    <section id="first">
+      <h2><span class="num">03</span> Your First Program</h2>
+      <p class="lede">Every embedded C program has the same shape.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">main.c</span></div>
+        <pre><span class="k">int</span> main(<span class="k">void</span>) {
+    <span class="f">setup</span>();          <span class="c">// runs once — prepare things</span>
+
+    <span class="k">while</span> (<span class="s">1</span>) {       <span class="c">// runs forever — the "main loop"</span>
+        <span class="f">loop</span>();
+    }
+}</pre>
+      </div>
+      <p>A few new words, explained:</p>
+      <ul>
+        <li><code>int main(void)</code> — every C program starts here. This is the function ("a named block of code") that runs first.</li>
+        <li><code>setup()</code> and <code>loop()</code> aren't special C keywords — they're just names we chose for two functions we'll write ourselves, to keep "run once" code separate from "run forever" code.</li>
+        <li><code>while (1) { ... }</code> — a loop that never stops, because <code>1</code> always means "true." On a desktop, a program that never ends would be a bug. On a chip, it's the point: as long as it has power, it should keep working.</li>
+        <li><code>//</code> starts a comment — text the compiler ignores, there for humans reading the code.</li>
+      </ul>
+      <div class="note"><b>Why no "end"?</b> On your laptop, when a program finishes, control goes back to the operating system. A microcontroller usually has no operating system to go back to — so the program simply loops forever, reacting to the world, until the power is cut.</div>
+    </section>
+
+    <!-- 4 -->
+    <section id="variables">
+      <h2><span class="num">04</span> Variables &amp; Data Types</h2>
+      <p class="lede">A variable is a labeled box that holds a value. The <b>type</b> says what kind of value fits in the box, and how big the box is.</p>
+
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">variables.c</span></div>
+        <pre><span class="t">int</span> count = <span class="s">0</span>;          <span class="c">// a whole number</span>
+<span class="t">float</span> voltage = <span class="s">3.3f</span>;   <span class="c">// a number with a decimal point</span>
+<span class="t">char</span> letter = <span class="s">'A'</span>;    <span class="c">// a single character</span></pre>
+      </div>
+
+      <p>The basic types, in plain terms:</p>
+      <table>
+        <tr><th>Type</th><th>Holds</th><th>Example</th></tr>
+        <tr><td>int</td><td>A whole number, positive or negative</td><td class="m">int age = 25;</td></tr>
+        <tr><td>unsigned int</td><td>A whole number that's <em>never negative</em></td><td class="m">unsigned int count = 100;</td></tr>
+        <tr><td>char</td><td>One character, or a tiny number (it's really just a small integer)</td><td class="m">char c = 'B';</td></tr>
+        <tr><td>float</td><td>A number with a decimal point</td><td class="m">float temp = 21.5f;</td></tr>
+        <tr><td>double</td><td>Like float, but more precise (and bigger)</td><td class="m">double pi = 3.14159265;</td></tr>
+        <tr><td>_Bool / bool</td><td>Just true or false</td><td class="m">bool on = true;</td></tr>
+      </table>
+
+      <h3>The types you'll actually use on a chip</h3>
+      <p>Here's something specific to embedded C: on a microcontroller, memory is precious, so we usually pick a type by exactly how many bits it needs — not just "int" and hoping for the best. These come from a header file called <code>&lt;stdint.h&gt;</code>:</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">exact-types.c</span></div>
+        <pre><span class="k">#include</span> <span class="s">&lt;stdint.h&gt;</span>
+
+<span class="t">uint8_t</span>  brightness = <span class="s">200</span>;   <span class="c">// 8 bits → holds 0 to 255</span>
+<span class="t">int8_t</span>   temp_c     = <span class="s">-10</span>;    <span class="c">// 8 bits, but can go negative: -128 to 127</span>
+<span class="t">uint16_t</span> reading    = <span class="s">4095</span>;   <span class="c">// 16 bits → holds 0 to 65,535</span>
+<span class="t">uint32_t</span> milliseconds = <span class="s">0</span>;   <span class="c">// 32 bits → holds a much bigger number</span></pre>
+      </div>
+      <table>
+        <tr><th>Type</th><th>Size</th><th>Range it can hold</th></tr>
+        <tr><td class="m">uint8_t</td><td class="m">8 bits (1 byte)</td><td class="m">0 to 255</td></tr>
+        <tr><td class="m">int8_t</td><td class="m">8 bits (1 byte)</td><td class="m">-128 to 127</td></tr>
+        <tr><td class="m">uint16_t</td><td class="m">16 bits (2 bytes)</td><td class="m">0 to 65,535</td></tr>
+        <tr><td class="m">uint32_t</td><td class="m">32 bits (4 bytes)</td><td class="m">0 to about 4.29 billion</td></tr>
+      </table>
+      <p>Read <code>uint8_t</code> as "<b>u</b>nsigned <b>int</b>eger, <b>8</b> bits, <b>t</b>ype." The "u" means it can't be negative. Once you know that pattern, all the others (<code>int16_t</code>, <code>uint32_t</code>...) read themselves.</p>
+      <div class="note"><b>Beginner tip</b> When you're not sure which to use yet, plain <code>int</code> is fine for learning and small test programs. Once you're writing real embedded code, switch to the exact-size types above — professionals use them almost everywhere.</div>
+    </section>
+
+    <!-- 5 -->
+    <section id="operators">
+      <h2><span class="num">05</span> Basic Syntax &amp; Operators</h2>
+      <p class="lede">Operators are the symbols that do the work: math, comparisons, and assignment.</p>
+      <table>
+        <tr><th>What you want</th><th>Symbol</th><th>Example</th></tr>
+        <tr><td>Add, subtract, multiply, divide</td><td class="m">+  -  *  /</td><td class="m">total = a + b;</td></tr>
+        <tr><td>Remainder after division</td><td class="m">%</td><td class="m">int rem = 10 % 3; // 1</td></tr>
+        <tr><td>Store a value</td><td class="m">=</td><td class="m">count = 5;</td></tr>
+        <tr><td>Is it equal? (a question, not assignment)</td><td class="m">==</td><td class="m">if (count == 5)</td></tr>
+        <tr><td>Not equal / less / greater</td><td class="m">!=  &lt;  &gt;</td><td class="m">if (count != 0)</td></tr>
+        <tr><td>Add 1 / subtract 1</td><td class="m">++  --</td><td class="m">count++;</td></tr>
+        <tr><td>"and" / "or" (both true? either true?)</td><td class="m">&amp;&amp;  ||</td><td class="m">if (a &amp;&amp; b)</td></tr>
+      </table>
+      <div class="note warn"><b>The #1 beginner trip-up</b> <code>=</code> means "store this value." <code>==</code> means "are these equal?" They look similar but do completely different things — mixing them up is the most common bug new C programmers write.</div>
+    </section>
+
+    <!-- 6 -->
+    <section id="decisions">
+      <h2><span class="num">06</span> Making Decisions</h2>
+      <p class="lede"><code>if</code>, <code>else</code>, and <code>switch</code> let your program choose what to do.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">decisions.c</span></div>
+        <pre><span class="t">uint16_t</span> temperature = <span class="s">85</span>;
+
+<span class="k">if</span> (temperature &gt; <span class="s">80</span>) {
+    <span class="f">turn_on_fan</span>();
+} <span class="k">else if</span> (temperature &gt; <span class="s">60</span>) {
+    <span class="f">idle</span>();
+} <span class="k">else</span> {
+    <span class="f">turn_off_fan</span>();
+}</pre>
+      </div>
+      <p>Read it out loud like English: "if temperature is greater than 80, turn on the fan; otherwise if it's greater than 60, idle; otherwise, turn off the fan." That's really all <code>if</code>/<code>else if</code>/<code>else</code> is.</p>
+      <p>When you're checking one variable against many exact values, <code>switch</code> is often cleaner:</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">switch.c</span></div>
+        <pre><span class="k">switch</span> (button_id) {
+    <span class="k">case</span> <span class="s">1</span>: <span class="f">start_motor</span>(); <span class="k">break</span>;
+    <span class="k">case</span> <span class="s">2</span>: <span class="f">stop_motor</span>();  <span class="k">break</span>;
+    <span class="k">default</span>: <span class="f">do_nothing</span>();  <span class="k">break</span>;
+}</pre>
+      </div>
+      <p>Don't forget <code>break;</code> — without it, C keeps running the next <code>case</code> too, which almost never is what you want.</p>
+    </section>
+
+    <!-- 7 -->
+    <section id="loops">
+      <h2><span class="num">07</span> Repeating Things: Loops</h2>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">loops.c</span></div>
+        <pre><span class="c">// "for" — repeat a known number of times</span>
+<span class="k">for</span> (<span class="t">uint8_t</span> i = <span class="s">0</span>; i &lt; <span class="s">10</span>; i++) {
+    <span class="f">blink_led</span>();
+}
+
+<span class="c">// "while" — repeat as long as something is true</span>
+<span class="k">while</span> (button_is_pressed()) {
+    <span class="f">count_up</span>();
+}</pre>
+      </div>
+      <p>A <code>for</code> loop packs "start, condition, step" into one line — good when you know how many times to repeat. A <code>while</code> loop just keeps going as long as its condition is true — good when you don't know the count in advance, only the stopping rule.</p>
+    </section>
+
+    <!-- 8 -->
+    <section id="functions">
+      <h2><span class="num">08</span> Functions</h2>
+      <p class="lede">A function is a named, reusable chunk of code — you already used two: <code>setup()</code> and <code>loop()</code>.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">functions.c</span></div>
+        <pre><span class="t">uint16_t</span> <span class="f">add_offset</span>(<span class="t">uint16_t</span> raw, <span class="t">uint16_t</span> offset) {
+    <span class="k">return</span> raw + offset;
+}
+
+<span class="k">void</span> <span class="f">blink_led</span>(<span class="k">void</span>) {
+    <span class="c">// no input, no return value — it just *does* something</span>
+}</pre>
+      </div>
+      <p>Break it down: <code>uint16_t</code> before the name is what the function <em>gives back</em> (its return type). <code>void</code> means "gives back nothing." The stuff in the parentheses — <code>uint16_t raw, uint16_t offset</code> — are the inputs, called <b>parameters</b>. Inside the <code>{ }</code> is what the function actually does.</p>
+    </section>
+
+    <!-- 9 -->
+    <section id="pointers">
+      <h2><span class="num">09</span> Pointers, Gently</h2>
+      <p class="lede">The idea that scares every beginner, explained without the scary part: a pointer just stores an <em>address</em>, not a value.</p>
+      <p>Every variable lives somewhere in memory — at an <b>address</b>, like a house number. A normal variable holds a <em>value</em>. A pointer holds the <em>address of</em> a value.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">pointers.c</span></div>
+        <pre><span class="t">uint8_t</span> brightness = <span class="s">50</span>;     <span class="c">// a normal variable — holds a value</span>
+<span class="t">uint8_t</span> *p = &amp;brightness;  <span class="c">// p holds brightness's ADDRESS ("&amp;" means "address of")</span>
+
+*p = <span class="s">80</span>;                    <span class="c">// "*p" means "go to that address and write here"</span>
+                              <span class="c">// this changes brightness to 80, through p</span></pre>
+      </div>
+      <div class="note"><b>Analogy</b> Think of a variable as a house, and its value as what's inside. A pointer isn't the house — it's a sticky note with the house's address written on it. <code>&amp;</code> means "give me the address." <code>*</code> means "go to the address and look inside (or write there)."</div>
+      <p>Why bother? Because in embedded C, a pointer is how you reach a specific piece of hardware — every pin and peripheral on the chip lives at a fixed address, and a pointer is how your code gets there. We'll use exactly this idea in section 13.</p>
+    </section>
+
+    <!-- 10 -->
+    <section id="arrays">
+      <h2><span class="num">10</span> Arrays &amp; Strings</h2>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">arrays.c</span></div>
+        <pre><span class="t">uint8_t</span> readings[<span class="s">5</span>];     <span class="c">// a box holding 5 uint8_t values, side by side</span>
+readings[<span class="s">0</span>] = <span class="s">12</span>;       <span class="c">// arrays start counting from 0, not 1</span>
+readings[<span class="s">1</span>] = <span class="s">45</span>;
+
+<span class="k">const</span> <span class="t">char</span> *message = <span class="s">"READY"</span>;  <span class="c">// text in C is just an array of characters</span></pre>
+      </div>
+      <p>An <b>array</b> is a numbered row of boxes of the same type. <code>readings[0]</code> is the first box, <code>readings[1]</code> the second, and so on — the count always starts at 0. Text ("strings") in C are simply arrays of <code>char</code>, ending with a hidden zero that marks "the text stops here."</p>
+    </section>
+
+    <!-- 11 -->
+    <section id="structs">
+      <h2><span class="num">11</span> Structs: Grouping Data</h2>
+      <p class="lede">A struct bundles related variables into one labeled package.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">struct.c</span></div>
+        <pre><span class="k">typedef struct</span> {
+    <span class="t">uint16_t</span> x;
+    <span class="t">uint16_t</span> y;
+} Point_t;
+
+Point_t p1 = { .x = <span class="s">10</span>, .y = <span class="s">20</span> };
+p1.x = <span class="s">15</span>;   <span class="c">// "." reaches inside the struct to a specific field</span></pre>
+      </div>
+      <p>Instead of tracking <code>x</code> and <code>y</code> as two separate loose variables, a struct keeps them together as one thing — a <code>Point_t</code>. This becomes very useful once one "thing" (like a sensor) has several properties at once.</p>
+    </section>
+
+    <!-- 12 -->
+    <section id="bits">
+      <h2><span class="num">12</span> Bits, Bytes &amp; Binary</h2>
+      <p class="lede">Computers only really understand two values: on and off. Everything else is built from that.</p>
+      <p>A <b>bit</b> is a single 0 or 1. A <b>byte</b> is 8 bits grouped together — enough to count from 0 to 255. When we write <code>uint8_t</code>, we mean exactly one byte, exactly 8 bits.</p>
+      <div class="reg" aria-hidden="true">
+        <div class="bit">0<small>b7</small></div>
+        <div class="bit">0<small>b6</small></div>
+        <div class="bit">0<small>b5</small></div>
+        <div class="bit">0<small>b4</small></div>
+        <div class="bit on">1<small>b3</small></div>
+        <div class="bit">0<small>b2</small></div>
+        <div class="bit">0<small>b1</small></div>
+        <div class="bit">0<small>b0</small></div>
+      </div>
+      <div class="reg-caption">Eight bits, one lit up (bit 3) — this pattern equals the number 8.</div>
+      <p>In embedded C, we often care about <em>individual bits</em> — one bit might mean "is this pin on," another "is this alarm active." The tools for that:</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">bits.c</span></div>
+        <pre><span class="t">uint8_t</span> flags = <span class="s">0</span>;
+
+flags |= (<span class="s">1</span> &lt;&lt; <span class="s">3</span>);   <span class="c">// turn ON bit 3</span>
+flags &amp;= ~(<span class="s">1</span> &lt;&lt; <span class="s">3</span>);  <span class="c">// turn OFF bit 3</span>
+
+<span class="k">if</span> (flags &amp; (<span class="s">1</span> &lt;&lt; <span class="s">3</span>)) {  <span class="c">// CHECK if bit 3 is on</span>
+    <span class="c">// it is!</span>
+}</pre>
+      </div>
+      <p><code>1 &lt;&lt; 3</code> reads as "take the number 1, and shift it left 3 places" — which produces a value with only bit 3 turned on. You don't need to memorize this instantly; you'll type it enough times that it becomes automatic.</p>
+    </section>
+
+    <!-- 13 -->
+    <section id="hardware">
+      <h2><span class="num">13</span> Talking to Hardware</h2>
+      <p class="lede">This is where pointers (section 9) and bits (section 12) come together to actually control something.</p>
+      <p>Every pin and hardware feature on a microcontroller is controlled by writing to a specific memory address — called a <b>register</b>. Writing the right bit pattern to the right address turns a pin on or off. This is exactly the "pointer to an address" idea from earlier, just aimed at hardware instead of a normal variable.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">register.c</span></div>
+        <pre><span class="c">// this line means: "treat address 0x40020014 as a uint32_t I can write to"</span>
+<span class="k">#define</span> LED_PORT (*(<span class="k">volatile</span> <span class="t">uint32_t</span> *)<span class="s">0x40020014</span>)
+
+LED_PORT |= (<span class="s">1</span> &lt;&lt; <span class="s">5</span>);   <span class="c">// turn ON pin 5, using the bit trick from section 12</span></pre>
+      </div>
+      <p>One new word: <code>volatile</code>. It tells the compiler "this value can change for reasons you can't see (real hardware), so don't get clever — always read it fresh." Every hardware register in embedded C is marked <code>volatile</code> for this reason.</p>
+      <div class="note"><b>You don't need to memorize addresses</b> Chip manufacturers provide header files with friendly names already defined (like <code>GPIOA</code> instead of <code>0x40020000</code>) — you'll use those in real projects, not raw addresses.</div>
+    </section>
+
+    <!-- 14 -->
+    <section id="project">
+      <h2><span class="num">14</span> First Project: Blink an LED</h2>
+      <p class="lede">Every piece above, put together.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">blink.c</span></div>
+        <pre><span class="k">#include</span> <span class="s">&lt;stdint.h&gt;</span>
+
+<span class="k">#define</span> LED_PIN     <span class="s">5u</span>
+<span class="k">#define</span> LED_MODE    (*(<span class="k">volatile</span> <span class="t">uint32_t</span> *)<span class="s">0x40020000</span>)  <span class="c">// sets pin as output</span>
+<span class="k">#define</span> LED_PORT    (*(<span class="k">volatile</span> <span class="t">uint32_t</span> *)<span class="s">0x40020014</span>)  <span class="c">// turns pin on/off</span>
+
+<span class="k">void</span> <span class="f">delay</span>(<span class="t">uint32_t</span> count) {
+    <span class="k">while</span> (count--) { <span class="c">/* just wastes time, on purpose */</span> }
+}
+
+<span class="k">int</span> <span class="f">main</span>(<span class="k">void</span>) {
+    LED_MODE |= (<span class="s">1</span> &lt;&lt; (LED_PIN * <span class="s">2</span>));  <span class="c">// step 1: tell the pin "you're an output"</span>
+
+    <span class="k">while</span> (<span class="s">1</span>) {                       <span class="c">// step 2: loop forever</span>
+        LED_PORT ^= (<span class="s">1</span> &lt;&lt; LED_PIN);       <span class="c">// step 3: flip the LED's pin (^ toggles it)</span>
+        <span class="f">delay</span>(<span class="s">500000</span>);                   <span class="c">// step 4: wait a bit before flipping again</span>
+    }
+}</pre>
+      </div>
+      <p>Walk through it slowly: we tell one pin "you're an output, not an input." Then, forever, we flip that pin's state (on→off, off→on) and pause between flips. That pause is the difference between a blink you can see and a flicker too fast to notice. Real projects use a proper timer instead of a wasteful counting loop, but this version teaches the idea without extra machinery.</p>
+      <div class="note warn"><b>Note</b> The addresses above (<code>0x40020000</code>...) are just examples in the style of one common chip family. Your actual board's addresses come from its datasheet or vendor header file — never guess them on real hardware.</div>
+    </section>
+
+    <!-- 15 -->
+    <section id="next">
+      <h2><span class="num">15</span> What to Learn Next</h2>
+      <p class="lede">You now have everything needed to read most beginner embedded C tutorials without getting lost.</p>
+      <ul>
+        <li><b>Get real hardware.</b> An Arduino Uno or an STM32 "Blue Pill"/Nucleo board are both cheap, well-documented starting points.</li>
+        <li><b>Interrupts.</b> A way for hardware to "tap your code on the shoulder" instantly, instead of your code having to constantly check ("poll") for changes.</li>
+        <li><b>Timers.</b> Built-in hardware clocks — the proper replacement for the wasteful <code>delay()</code> loop above.</li>
+        <li><b>UART/I2C/SPI.</b> The common ways chips talk to other chips and sensors.</li>
+        <li><b>Reading a datasheet.</b> A real skill — it's just a big reference table of registers and what each bit means.</li>
+      </ul>
+      <div class="note"><b>You're ready</b> Every advanced embedded C topic is built from the pieces in this course: variables, bits, pointers, and registers. Nothing after this is a new language — just new combinations of what you already know.</div>
+    </section>
+
+    <!-- Glossary -->
+    <section id="glossary">
+      <h2><span class="num">16</span> Glossary</h2>
+      <table>
+        <tr><th>Term</th><th>Plain-English meaning</th></tr>
+        <tr><td>Microcontroller</td><td>A tiny computer on one chip, built into a device.</td></tr>
+        <tr><td>Compiler</td><td>The program that turns your C code into instructions the chip can run.</td></tr>
+        <tr><td>Bit</td><td>A single 0 or 1 — the smallest unit of information.</td></tr>
+        <tr><td>Byte</td><td>8 bits grouped together (can represent 0–255).</td></tr>
+        <tr><td>Variable</td><td>A named, typed storage location for a value.</td></tr>
+        <tr><td>Function</td><td>A named, reusable block of code.</td></tr>
+        <tr><td>Pointer</td><td>A variable that stores a memory address instead of a normal value.</td></tr>
+        <tr><td>Array</td><td>A numbered row of same-type values, indexed starting at 0.</td></tr>
+        <tr><td>Struct</td><td>A bundle of related variables grouped under one name.</td></tr>
+        <tr><td>Register</td><td>A specific memory address that controls or reports on hardware.</td></tr>
+        <tr><td>volatile</td><td>A keyword telling the compiler "this can change unexpectedly — always re-read it."</td></tr>
+        <tr><td>Interrupt</td><td>A signal that pauses normal code to instantly handle something urgent, then resumes.</td></tr>
+      </table>
+    </section>
+
+    <footer>
+      <span class="end">// end of the beginner course</span> — next stop, real hardware.
+    </footer>
+  </main>
+</div>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+  if (toggle) toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+
+  const links = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('section');
+  const map = new Map();
+  links.forEach(l => map.set(l.getAttribute('href').slice(1), l));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = map.get(entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>
