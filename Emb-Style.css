@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
   :root{
-    --bg:#fffbff;
+    --bg:#0b0f14;
     --panel:#121821;
     --panel-2:#0e141c;
     --border:#1d2733;
-    --text:#000000;
+    --text:#e6edf3;
     --muted:#8b98a5;
     --amber:#ffb454;
     --copper:#ff8b5e;
