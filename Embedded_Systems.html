@@ -11,6 +11,7 @@
 <div class="app">
 
   <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="backlink">← Electrons .e- Academy</a>
     <div class="brand">
       <div class="chip">µC</div>
       <div class="brand-text"><b>Embedded C</b>beginner's course</div>
@@ -362,6 +363,10 @@ LED_PORT |= (<span class="s">1</span> &lt;&lt; <span class="s">5</span>);   <spa
         <li><b>Reading a datasheet.</b> A real skill — it's just a big reference table of registers and what each bit means.</li>
       </ul>
       <div class="note"><b>You're ready</b> Every advanced embedded C topic is built from the pieces in this course: variables, bits, pointers, and registers. Nothing after this is a new language — just new combinations of what you already know.</div>
+      <div class="cta-card">
+        <div class="txt"><b>Ready to build something real?</b><span>Head to the Workshops section for hands-on, guided projects.</span></div>
+        <a href="Workshops.html" class="btn">Explore Workshops →</a>
+      </div>
     </section>
 
     <!-- Glossary -->
@@ -386,6 +391,7 @@ LED_PORT |= (<span class="s">1</span> &lt;&lt; <span class="s">5</span>);   <spa
 
     <footer>
       <span class="end">// end of the beginner course</span> — next stop, real hardware.
+      <p><a href="index.html">← Back to Electrons .e- Academy</a> · <a href="Workshops.html">See all Workshops →</a></p>
     </footer>
   </main>
 </div>
@@ -412,17 +418,6 @@ LED_PORT |= (<span class="s">1</span> &lt;&lt; <span class="s">5</span>);   <spa
   }, { rootMargin: '-20% 0px -70% 0px' });
 
   sections.forEach(s => observer.observe(s));
-</script>
-  <footer>
-  <div class="footer-content">
-    <div class="footer-right">
-      <!-- AUTO-UPDATING COPYRIGHT YEAR -->
-      <p>&copy; <span id="copyright-year"></span> Electrons <sup>.e-</sup> Academy | Designed for future innovators</p>
-    </div>
-  </div>
-</footer>
-<script>
-  document.getElementById('copyright-year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>

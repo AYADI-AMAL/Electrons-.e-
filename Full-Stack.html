@@ -1,20 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full-Stack</title>
- <link rel="stylesheet" href="Full-stack.css" />
- <link rel="icon" type="image/x-icon" href="image\Diploma-in-Embedded-System-1.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full-Stack Development — Beginner's Course | Electrons .e- Academy</title>
+<meta name="description" content="A full beginner's course in full-stack web development: HTML, CSS, JavaScript, Node.js, APIs, databases and deployment.">
+<link rel="icon" type="image/x-icon" href="image\Diploma-in-Embedded-System-1.ico">
+<link rel="stylesheet" href="Full-stack.css">
 </head>
 <body>
-<header>
-<h1>Electrons <sup>.e-</sup> Academy</h1>
-<p>Master Full Stack Development</p>
-</header>
-<p>Hello Full-stack Developer!👋<br>This page is currently in progress… 🚀 <br>Please stay tuned for awesome content coming soon! 🔧💻</p>
+<div class="app">
+
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html" class="backlink">← Electrons .e- Academy</a>
+    <div class="brand">
+      <div class="chip">&lt;/&gt;</div>
+      <div class="brand-text"><b>Full-Stack Dev</b>beginner's course</div>
+    </div>
+    <button class="navToggle" id="navToggle">☰ Contents</button>
+    <nav>
+      <ol>
+        <li><a href="#intro">What Is Full-Stack Dev?</a></li>
+        <li><a href="#web">How the Web Works</a></li>
+        <li><a href="#html">HTML: Structuring a Page</a></li>
+        <li><a href="#css">CSS: Styling &amp; Layout</a></li>
+        <li><a href="#jsvars">JS: Variables &amp; Data Types</a></li>
+        <li><a href="#jssyntax">JS: Syntax, Conditions, Loops</a></li>
+        <li><a href="#jsfunctions">Functions in JavaScript</a></li>
+        <li><a href="#jsdata">Arrays, Objects &amp; JSON</a></li>
+        <li><a href="#dom">The DOM: Interactive Pages</a></li>
+        <li><a href="#git">Git &amp; GitHub</a></li>
+        <li><a href="#node">Node.js: JS on the Server</a></li>
+        <li><a href="#api">Building a Simple API</a></li>
+        <li><a href="#db">Databases, Briefly</a></li>
+        <li><a href="#connect">Connecting Front to Back</a></li>
+        <li><a href="#deploy">Deploying Your Project</a></li>
+        <li><a href="#next">What to Learn Next</a></li>
+        <li><a href="#glossary">Glossary</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="hero">
+      <div class="badge">beginner edition · no prior experience needed</div>
+      <div class="eyebrow">// frontend + backend + everything between</div>
+      <h1>Full-Stack Development for absolute beginners</h1>
+      <p>Every website you've ever used is built from the same three ingredients: structure, style, and behavior — plus something on a server keeping track of your data. This course walks through both halves, front and back, in plain language, building toward one real project: a page that talks to a tiny server.</p>
+      <div class="stack-strip" aria-hidden="true">
+        <div class="layer">Browser <small>HTML · CSS · JS</small></div>
+        <div class="arrow">⇄</div>
+        <div class="layer">Server <small>Node.js · API</small></div>
+        <div class="arrow">⇄</div>
+        <div class="layer">Database <small>stores the data</small></div>
+      </div>
+      <div class="reg-caption">This is the whole map. By section 14 you'll know how every arrow works.</div>
+    </div>
+
+    <!-- 1 -->
+    <section id="intro">
+      <h2><span class="num">01</span> What Is Full-Stack Development?</h2>
+      <p class="lede">"Full-stack" just means you can work on both ends of a website: what people see, and what runs behind the scenes.</p>
+      <p>A website has two halves. The <b>frontend</b> is everything a visitor sees and clicks in their browser — text, images, buttons, layout. The <b>backend</b> is the part running on a server somewhere else, handling data: saving your profile, checking a password, storing an order.</p>
+      <ul>
+        <li><b>Frontend:</b> HTML (structure), CSS (style), JavaScript (behavior) — all run inside the visitor's browser.</li>
+        <li><b>Backend:</b> a server program (often written in JavaScript via Node.js, or Python, or others) that stores and serves data.</li>
+        <li><b>Database:</b> where information is kept long-term — user accounts, blog posts, product listings.</li>
+      </ul>
+      <div class="note"><b>Don't worry</b> Every term here is explained in full the first time it's used, in the section built for it. You don't need to know what an "API" or "the DOM" is yet — that's exactly what's coming.</div>
+    </section>
+
+    <!-- 2 -->
+    <section id="web">
+      <h2><span class="num">02</span> How the Web Works</h2>
+      <p class="lede">A website is just two computers passing messages back and forth.</p>
+      <p>When you type a web address, your browser sends a <b>request</b> asking a server "can I have this page?" The server sends back a <b>response</b> — usually an HTML file, plus the CSS and JavaScript it needs. This request/response exchange happens over <b>HTTP</b> (HyperText Transfer Protocol), the web's basic messaging rulebook.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">the flow</span></div>
+        <pre><span class="c">// 1. You type an address and press Enter</span>
+<span class="f">browser</span>.<span class="f">request</span>(<span class="s">"https://example.com"</span>);
+
+<span class="c">// 2. The server finds and sends back the page</span>
+<span class="f">server</span>.<span class="f">respond</span>(<span class="s">"index.html + styles.css + script.js"</span>);
+
+<span class="c">// 3. Your browser draws it on screen — that's the page you see</span></pre>
+      </div>
+      <div class="note"><b>Analogy</b> Think of the browser as a customer at a counter, and the server as the kitchen. The customer orders ("give me this page"), the kitchen prepares it and hands it back. Every click on a link is a new order.</div>
+    </section>
+
+    <!-- 3 -->
+    <section id="html">
+      <h2><span class="num">03</span> HTML: Structuring a Page</h2>
+      <p class="lede">HTML (HyperText Markup Language) describes what's <em>on</em> the page — headings, paragraphs, images, buttons.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">page.html</span></div>
+        <pre><span class="k">&lt;!DOCTYPE html&gt;</span>
+<span class="k">&lt;html&gt;</span>
+<span class="k">&lt;head&gt;</span>
+  <span class="k">&lt;title&gt;</span>My First Page<span class="k">&lt;/title&gt;</span>
+<span class="k">&lt;/head&gt;</span>
+<span class="k">&lt;body&gt;</span>
+  <span class="k">&lt;h1&gt;</span>Hello, world!<span class="k">&lt;/h1&gt;</span>
+  <span class="k">&lt;p&gt;</span>This is a paragraph of text.<span class="k">&lt;/p&gt;</span>
+  <span class="k">&lt;button&gt;</span>Click me<span class="k">&lt;/button&gt;</span>
+<span class="k">&lt;/body&gt;</span>
+<span class="k">&lt;/html&gt;</span></pre>
+      </div>
+      <p>HTML is built from <b>tags</b> like <code>&lt;h1&gt;</code> (a big heading) and <code>&lt;p&gt;</code> (a paragraph), almost always in opening/closing pairs that wrap the content they describe. The browser reads this file top to bottom and turns each tag into something visual.</p>
+      <div class="note"><b>Common tags</b> <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code> headings, <code>&lt;p&gt;</code> paragraph, <code>&lt;a href="..."&gt;</code> link, <code>&lt;img src="..."&gt;</code> image, <code>&lt;div&gt;</code> a generic box, <code>&lt;button&gt;</code> a clickable button.</div>
+    </section>
+
+    <!-- 4 -->
+    <section id="css">
+      <h2><span class="num">04</span> CSS: Styling &amp; Layout</h2>
+      <p class="lede">CSS (Cascading Style Sheets) describes how things <em>look</em> — colors, fonts, spacing, and where elements sit on the page.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">style.css</span></div>
+        <pre><span class="f">h1</span> {
+    <span class="t">color</span>: <span class="s">navy</span>;
+    <span class="t">font-size</span>: <span class="s">32px</span>;
+}
+
+<span class="f">.card</span> {
+    <span class="t">background</span>: <span class="s">#f5f5f5</span>;
+    <span class="t">padding</span>: <span class="s">16px</span>;
+    <span class="t">border-radius</span>: <span class="s">8px</span>;
+}</pre>
+      </div>
+      <p>Each rule targets something (an <code>h1</code> tag, or anything with <code>class="card"</code>) and lists properties to change. A <b>class</b> is a label you give an HTML element so CSS (or JavaScript) can single it out: <code>&lt;div class="card"&gt;</code>.</p>
+      <h3>Laying things out: Flexbox</h3>
+      <p>Modern layouts mostly use <b>Flexbox</b> — one property that turns a container into a row (or column) that lines up its children automatically.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">layout.css</span></div>
+        <pre><span class="f">.row</span> {
+    <span class="t">display</span>: <span class="s">flex</span>;         <span class="c">/* children sit side by side */</span>
+    <span class="t">justify-content</span>: <span class="s">center</span>;
+    <span class="t">gap</span>: <span class="s">1rem</span>;
+}</pre>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section id="jsvars">
+      <h2><span class="num">05</span> JS: Variables &amp; Data Types</h2>
+      <p class="lede">JavaScript is what makes a page <em>do</em> something instead of just sitting there. It runs both in the browser and, later, on the server.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">variables.js</span></div>
+        <pre><span class="k">let</span> age = <span class="s">25</span>;            <span class="c">// a number, can change later</span>
+<span class="k">const</span> name = <span class="s">"Amal"</span>;     <span class="c">// text (a "string"), can't be reassigned</span>
+<span class="k">let</span> isStudent = <span class="s">true</span>;   <span class="c">// true or false (a "boolean")</span>
+<span class="k">let</span> nothingYet = <span class="s">null</span>;  <span class="c">// deliberately empty</span></pre>
+      </div>
+      <table>
+        <tr><th>Type</th><th>Holds</th><th>Example</th></tr>
+        <tr><td>Number</td><td>Any number, whole or decimal</td><td class="m">let price = 19.99;</td></tr>
+        <tr><td>String</td><td>Text, in quotes</td><td class="m">let city = "Tunis";</td></tr>
+        <tr><td>Boolean</td><td>true or false</td><td class="m">let done = false;</td></tr>
+        <tr><td>Array</td><td>An ordered list of values</td><td class="m">let colors = ["red","blue"];</td></tr>
+        <tr><td>Object</td><td>Named key/value pairs</td><td class="m">let user = &#123;name:"Amal"&#125;;</td></tr>
+        <tr><td>null / undefined</td><td>"Nothing" / "not set yet"</td><td class="m">let x = null;</td></tr>
+      </table>
+      <div class="note"><b>let vs const</b> Use <code>const</code> by default — it means "this name won't be reassigned." Switch to <code>let</code> only for values you genuinely need to change later, like a counter.</div>
+    </section>
+
+    <!-- 6 -->
+    <section id="jssyntax">
+      <h2><span class="num">06</span> JS: Syntax, Conditions, Loops</h2>
+      <table>
+        <tr><th>What you want</th><th>Symbol</th><th>Example</th></tr>
+        <tr><td>Math</td><td class="m">+  -  *  /  %</td><td class="m">total = price * qty;</td></tr>
+        <tr><td>Store a value</td><td class="m">=</td><td class="m">age = 26;</td></tr>
+        <tr><td>Is it equal?</td><td class="m">===</td><td class="m">if (age === 18)</td></tr>
+        <tr><td>and / or / not</td><td class="m">&amp;&amp;  ||  !</td><td class="m">if (a &amp;&amp; !b)</td></tr>
+      </table>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">control.js</span></div>
+        <pre><span class="k">if</span> (age &gt;= <span class="s">18</span>) {
+    <span class="f">console</span>.<span class="f">log</span>(<span class="s">"Adult"</span>);
+} <span class="k">else</span> {
+    <span class="f">console</span>.<span class="f">log</span>(<span class="s">"Minor"</span>);
+}
+
+<span class="k">for</span> (<span class="k">let</span> i = <span class="s">0</span>; i &lt; <span class="s">5</span>; i++) {
+    <span class="f">console</span>.<span class="f">log</span>(i);      <span class="c">// prints 0,1,2,3,4</span>
+}</pre>
+      </div>
+      <div class="note warn"><b>Use ===, not ==</b> <code>===</code> compares value <em>and</em> type strictly — the safe default. Plain <code>==</code> silently converts types before comparing and causes surprising bugs.</div>
+    </section>
+
+    <!-- 7 -->
+    <section id="jsfunctions">
+      <h2><span class="num">07</span> Functions in JavaScript</h2>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">functions.js</span></div>
+        <pre><span class="k">function</span> <span class="f">add</span>(a, b) {
+    <span class="k">return</span> a + b;
+}
+
+<span class="k">const</span> multiply = (a, b) =&gt; a * b;   <span class="c">// "arrow function" — a shorter way to write one</span>
+
+<span class="f">console</span>.<span class="f">log</span>(<span class="f">add</span>(<span class="s">2</span>, <span class="s">3</span>));        <span class="c">// 5</span></pre>
+      </div>
+      <p>A function is a named, reusable block of code. It can take <b>parameters</b> (the inputs, like <code>a</code> and <code>b</code>) and <code>return</code> a result. Arrow functions (<code>=&gt;</code>) are just a shorter way to write the same idea, used constantly in modern JavaScript.</p>
+    </section>
+
+    <!-- 8 -->
+    <section id="jsdata">
+      <h2><span class="num">08</span> Arrays, Objects &amp; JSON</h2>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">data.js</span></div>
+        <pre><span class="k">const</span> colors = [<span class="s">"red"</span>, <span class="s">"green"</span>, <span class="s">"blue"</span>];
+<span class="f">console</span>.<span class="f">log</span>(colors[<span class="s">0</span>]);       <span class="c">// "red" — arrays start counting at 0</span>
+
+<span class="k">const</span> user = {
+    name: <span class="s">"Amal"</span>,
+    age: <span class="s">25</span>,
+    isStudent: <span class="s">true</span>
+};
+<span class="f">console</span>.<span class="f">log</span>(user.name);   <span class="c">// "Amal" — "." reaches inside the object</span></pre>
+      </div>
+      <p>An <b>array</b> is an ordered list. An <b>object</b> is a bundle of named properties — very similar to a <code>struct</code> in C, if that's familiar. <b>JSON</b> (JavaScript Object Notation) is just this object syntax used as a plain-text format — it's how the frontend and backend send structured data to each other, which comes back in section 14.</p>
+    </section>
+
+    <!-- 9 -->
+    <section id="dom">
+      <h2><span class="num">09</span> The DOM: Interactive Pages</h2>
+      <p class="lede">The DOM (Document Object Model) is how JavaScript "sees" and changes the HTML on the page, live.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">interact.js</span></div>
+        <pre><span class="k">const</span> button = <span class="f">document</span>.<span class="f">querySelector</span>(<span class="s">"button"</span>);
+
+button.<span class="f">addEventListener</span>(<span class="s">"click"</span>, () =&gt; {
+    <span class="f">document</span>.<span class="f">querySelector</span>(<span class="s">"h1"</span>).<span class="t">textContent</span> = <span class="s">"You clicked it!"</span>;
+});</pre>
+      </div>
+      <p><code>document.querySelector(...)</code> finds an element on the page. <code>addEventListener("click", ...)</code> says "when this is clicked, run this function." This one pattern — find something, listen for an event, change something — is behind almost every interactive website you've used.</p>
+    </section>
+
+    <!-- 10 -->
+    <section id="git">
+      <h2><span class="num">10</span> Git &amp; GitHub</h2>
+      <p class="lede">Git tracks every change to your code over time. GitHub hosts that history online so you can share and collaborate.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">terminal</span></div>
+        <pre><span class="c"># save your changes as a labeled checkpoint</span>
+<span class="f">git</span> add <span class="s">.</span>
+<span class="f">git</span> commit -m <span class="s">"Add homepage"</span>
+
+<span class="c"># send that checkpoint to GitHub</span>
+<span class="f">git</span> push</pre>
+      </div>
+      <p>Think of a <b>commit</b> as a save point you can always come back to, with a note describing what changed. A <b>repository</b> ("repo") is a project's full folder of code plus its entire history. This whole academy site, in fact, lives in one.</p>
+    </section>
+
+    <!-- 11 -->
+    <section id="node">
+      <h2><span class="num">11</span> Node.js: JavaScript on the Server</h2>
+      <p class="lede">Node.js lets JavaScript run outside the browser — on a server, where it can read files, talk to databases, and respond to requests.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">server.js</span></div>
+        <pre><span class="k">const</span> http = <span class="f">require</span>(<span class="s">"http"</span>);
+
+<span class="k">const</span> server = http.<span class="f">createServer</span>((req, res) =&gt; {
+    res.<span class="f">end</span>(<span class="s">"Hello from the server!"</span>);
+});
+
+server.<span class="f">listen</span>(<span class="s">3000</span>);   <span class="c">// now listening on http://localhost:3000</span></pre>
+      </div>
+      <p>This is the "backend" from section 1 made real: a program that stays running, waiting for requests, and responding to each one. Frameworks like <b>Express</b> (next section) make writing this kind of code much shorter.</p>
+    </section>
+
+    <!-- 12 -->
+    <section id="api">
+      <h2><span class="num">12</span> Building a Simple API</h2>
+      <p class="lede">An API (Application Programming Interface) is a defined set of URLs a server responds to — the "menu" your frontend can order from.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">api.js</span></div>
+        <pre><span class="k">const</span> express = <span class="f">require</span>(<span class="s">"express"</span>);
+<span class="k">const</span> app = <span class="f">express</span>();
+
+app.<span class="f">get</span>(<span class="s">"/api/users"</span>, (req, res) =&gt; {
+    res.<span class="f">json</span>([{ name: <span class="s">"Amal"</span> }, { name: <span class="s">"Sami"</span> }]);
+});
+
+app.<span class="f">listen</span>(<span class="s">3000</span>);</pre>
+      </div>
+      <p><code>app.get("/api/users", ...)</code> says "when someone requests this exact URL, run this function and send back JSON." Real APIs also handle <code>POST</code> (create something new), <code>PUT</code> (update), and <code>DELETE</code> — together these four cover almost everything a website needs to do with data.</p>
+    </section>
+
+    <!-- 13 -->
+    <section id="db">
+      <h2><span class="num">13</span> Databases, Briefly</h2>
+      <p class="lede">A database is where data survives after the server restarts — user accounts, posts, orders.</p>
+      <table>
+        <tr><th>Kind</th><th>Idea</th><th>Examples</th></tr>
+        <tr><td>SQL (relational)</td><td>Data in strict tables with rows and columns, like a spreadsheet with rules</td><td class="m">PostgreSQL, MySQL, SQLite</td></tr>
+        <tr><td>NoSQL (document)</td><td>Data stored as flexible JSON-like documents</td><td class="m">MongoDB</td></tr>
+      </table>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">query.sql</span></div>
+        <pre><span class="k">SELECT</span> name, email <span class="k">FROM</span> users <span class="k">WHERE</span> age &gt; <span class="s">18</span>;</pre>
+      </div>
+      <p>You don't need to master databases to start — just know that the backend's job, most of the time, is reading from and writing to one of these on your behalf.</p>
+    </section>
+
+    <!-- 14 -->
+    <section id="connect">
+      <h2><span class="num">14</span> Connecting Frontend to Backend</h2>
+      <p class="lede">The moment it all clicks together: the browser asking the server for data, with JavaScript's <code>fetch</code>.</p>
+      <div class="code">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="fname">fetch.js</span></div>
+        <pre><span class="f">fetch</span>(<span class="s">"/api/users"</span>)
+    .<span class="f">then</span>(res =&gt; res.<span class="f">json</span>())         <span class="c">// turn the response into usable JS data</span>
+    .<span class="f">then</span>(users =&gt; {
+        <span class="f">console</span>.<span class="f">log</span>(users);             <span class="c">// [{name: "Amal"}, {name: "Sami"}]</span>
+    });</pre>
+      </div>
+      <p>This is the whole loop from the hero diagram, written out: the browser <code>fetch</code>es a URL, the Node.js/Express server (section 12) answers with JSON pulled from a database (section 13), and the frontend uses that data to update the page (section 9).</p>
+    </section>
+
+    <!-- 15 -->
+    <section id="deploy">
+      <h2><span class="num">15</span> Deploying Your Project</h2>
+      <p class="lede">"Deploying" means putting your project on a server the whole internet can reach, instead of just your own computer.</p>
+      <ul>
+        <li><b>Static sites</b> (HTML/CSS/JS only, no server code) — services like GitHub Pages, Netlify, or Vercel host them for free.</li>
+        <li><b>Full apps with a backend</b> — services like Render, Railway, or a VPS run your Node.js server continuously.</li>
+        <li><b>Domain name</b> — optional, but it's what turns a long hosting URL into something like <code>yoursite.com</code>.</li>
+      </ul>
+      <div class="note"><b>Good news</b> This very academy site is a static HTML/CSS/JS site hosted straight from its GitHub repository — the simplest possible deployment, and a great first target to imitate.</div>
+    </section>
+
+    <!-- 16 -->
+    <section id="next">
+      <h2><span class="num">16</span> What to Learn Next</h2>
+      <p class="lede">You now have the full map — every advanced topic from here is a deeper look at one of these pieces.</p>
+      <ul>
+        <li><b>A frontend framework</b> — React, Vue, or Svelte make building complex interfaces far more manageable than raw JavaScript.</li>
+        <li><b>Authentication</b> — how login, passwords, and sessions are actually handled securely.</li>
+        <li><b>TypeScript</b> — JavaScript with types added, catching a whole category of bugs before they run.</li>
+        <li><b>Testing</b> — writing code that checks your other code automatically.</li>
+        <li><b>Build tools</b> — bundlers like Vite that prepare your code for production.</li>
+      </ul>
+      <div class="cta-card">
+        <div class="txt"><b>Ready to build something real?</b><span>Head to the Workshops section for hands-on, guided projects.</span></div>
+        <a href="Workshops.html" class="btn">Explore Workshops →</a>
+      </div>
+    </section>
+
+    <!-- Glossary -->
+    <section id="glossary">
+      <h2><span class="num">17</span> Glossary</h2>
+      <table>
+        <tr><th>Term</th><th>Plain-English meaning</th></tr>
+        <tr><td>Frontend</td><td>Everything the visitor sees and interacts with in the browser.</td></tr>
+        <tr><td>Backend</td><td>The server-side program handling data and logic.</td></tr>
+        <tr><td>HTTP request/response</td><td>The message a browser sends, and the reply a server sends back.</td></tr>
+        <tr><td>API</td><td>A defined set of URLs a server responds to, for sending/receiving data.</td></tr>
+        <tr><td>DOM</td><td>The live, in-memory version of a page's HTML that JavaScript can change.</td></tr>
+        <tr><td>JSON</td><td>A plain-text format for structured data, based on JS object syntax.</td></tr>
+        <tr><td>Repository</td><td>A project's folder of code plus its full change history.</td></tr>
+        <tr><td>Commit</td><td>A saved checkpoint of changes in Git, with a description.</td></tr>
+        <tr><td>Database</td><td>Where data is stored long-term, beyond a single server session.</td></tr>
+        <tr><td>Deploy</td><td>Publishing a project to a server the public internet can reach.</td></tr>
+      </table>
+    </section>
+
+    <footer>
+      <span class="end">// end of the beginner course</span> — next stop, your first real project.
+      <p><a href="index.html">← Back to Electrons .e- Academy</a> · <a href="Workshops.html">See all Workshops →</a></p>
+    </footer>
+  </main>
+</div>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+  if (toggle) toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+
+  const links = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('section');
+  const map = new Map();
+  links.forEach(l => map.set(l.getAttribute('href').slice(1), l));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = map.get(entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
 </html>
-
-
-
-

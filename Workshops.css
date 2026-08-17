@@ -1,0 +1,180 @@
+:root {
+  --dark-blue: #1a2b4c;
+  --mustard-yellow: #f1c40f;
+  --white: #ffffff;
+  --light-grey: #dcdcdc;
+  --track-emb: #ff8b5e;
+  --track-full: #5ec8ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--white);
+  color: var(--dark-blue);
+}
+
+header {
+  background-color: var(--dark-blue);
+  padding: 1rem;
+  text-align: center;
+  color: var(--mustard-yellow);
+}
+
+nav {
+  background-color: var(--light-grey);
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-weight: bold;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--mustard-yellow);
+}
+
+/* ----- Hero ----- */
+.hero {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 3rem 1rem;
+  text-align: center;
+}
+.hero h1 { font-size: 2.6rem; margin-bottom: 1rem; }
+.hero p { font-size: 1.15rem; max-width: 700px; margin: 0 auto; opacity: .92; }
+
+/* ----- Filter tabs ----- */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+  padding: 1.6rem 1rem 0;
+}
+.filter-btn {
+  background: var(--light-grey);
+  border: none;
+  color: var(--dark-blue);
+  font-weight: 600;
+  padding: .55rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: .9rem;
+  transition: .2s;
+}
+.filter-btn:hover { background: #cfcfcf; }
+.filter-btn.active {
+  background: var(--dark-blue);
+  color: var(--mustard-yellow);
+}
+
+/* ----- Sections ----- */
+.track-section {
+  padding: 2.5rem 1rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.track-heading {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: .3rem;
+}
+.track-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.track-dot.emb { background: var(--track-emb); }
+.track-dot.full { background: var(--track-full); }
+.track-heading h2 { margin: 0; color: var(--dark-blue); }
+.track-sub { color: #5a6a85; margin: 0 0 1.4rem 1.9rem; font-size: .95rem; }
+
+/* ----- Project grid ----- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+.project-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  padding: 1.4rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--track-emb);
+}
+.project-card.full { border-top-color: var(--track-full); }
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
+
+.project-card .top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .6rem;
+}
+
+.difficulty {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: .25rem .6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.difficulty.beginner { background: #e7f9ef; color: #1c8a4f; }
+.difficulty.intermediate { background: #fff4e0; color: #b5720b; }
+.difficulty.advanced { background: #fde8e8; color: #c0392b; }
+
+.project-card h3 { margin: 0 0 .5rem; color: var(--dark-blue); font-size: 1.15rem; }
+.project-card p.desc { color: #48566e; font-size: .92rem; margin: 0 0 .9rem; flex-grow: 1; }
+
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .2rem; }
+.tag {
+  font-size: .74rem;
+  background: var(--light-grey);
+  color: var(--dark-blue);
+  padding: .25rem .55rem;
+  border-radius: 6px;
+  font-family: 'Consolas', monospace;
+}
+
+/* ----- Intro note ----- */
+.intro-note {
+  max-width: 800px;
+  margin: 2rem auto 0;
+  padding: 1rem 1.4rem;
+  background: #f0f4fe;
+  border-left: 4px solid var(--dark-blue);
+  border-radius: 0 10px 10px 0;
+  font-size: .95rem;
+  color: var(--dark-blue);
+}
+
+footer {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  text-align: center;
+  padding: 1.4rem 1rem;
+  margin-top: 3rem;
+}
+footer a { color: var(--mustard-yellow); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 2rem; }
+  .track-sub { margin-left: 0; }
+}
