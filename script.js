@@ -1,7 +1,18 @@
-// script.js - Chatbot + Interactive Content
+// script.js - Chatbot + Nav Toggle + Interactive Content
 
 (function() {
     'use strict';
+
+    // ================================================================
+    //  MOBILE NAV TOGGLE
+    // ================================================================
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+        });
+    }
 
     // ================================================================
     //  CHATBOT FUNCTIONALITY
@@ -27,8 +38,11 @@
             return 'Hello! 👋 How can I help you today?';
         } 
         else if (lower.includes('course') || lower.includes('learn') || lower.includes('study') || lower.includes('formation')) {
-            return 'We offer Embedded Systems and Full‑Stack Development. More content coming soon!';
+            return 'We offer Embedded Systems and Full‑Stack Development courses, plus hands-on Workshops. Check the nav above!';
         } 
+        else if (lower.includes('workshop') || lower.includes('project')) {
+            return 'The Workshops page has 12 hands-on projects — 6 Embedded, 6 Full-Stack — from beginner to advanced.';
+        }
         else if (lower.includes('embedded') || lower.includes('micro') || lower.includes('stm32') || lower.includes('système embarqué')) {
             return 'Embedded Systems covers C, STM32, RTOS, sensors, and IoT. Ask for details!';
         } 
