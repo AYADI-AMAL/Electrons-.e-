@@ -5,25 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Workshops — Electrons .e- Academy</title>
 <meta name="description" content="Hands-on Embedded Systems and Full-Stack Development workshop projects at Electrons .e- Academy.">
-<link rel="stylesheet" href="Workshops.css" />
 <link rel="icon" type="image/x-icon" href="image\Diploma-in-Embedded-System-1.ico">
+<link rel="stylesheet" href="brand.css" />
+<link rel="stylesheet" href="Workshops.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-  <h1>Electrons <sup>.e-</sup> Academy</h1>
-  <p>Master Embedded Systems &amp; Full Stack Development</p>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="index.html#Courses">Courses</a>
-  <a href="Workshops.html" class="active">Workshops</a>
-  <a href="index.html#social-section">Contact</a>
+<nav class="site-nav">
+  <a href="index.html" class="brandmark">
+    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class="orbit-a" cx="20" cy="20" rx="16" ry="7" transform="rotate(30 20 20)"/>
+      <ellipse class="orbit-b" cx="20" cy="20" rx="16" ry="7" transform="rotate(-30 20 20)"/>
+      <circle class="nucleus" cx="20" cy="20" r="3.2"/>
+    </svg>
+    <span class="word">Electrons <sup>.e-</sup></span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+  <div class="links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="index.html#Courses">Courses</a>
+    <a href="Workshops.html" class="active">Workshops</a>
+    <a href="index.html#social-section">Contact</a>
+  </div>
+  <a href="index.html#Courses" class="cta">Start Learning</a>
 </nav>
 
-<section class="hero">
+<section class="hero-sm">
+  <div class="eyebrow">// build something real</div>
   <h1>Workshops</h1>
   <p>Courses teach you the pieces. Workshops are where you put them together — real, hands-on projects for both the Embedded Systems and Full-Stack Development tracks, ordered from beginner to advanced.</p>
 </section>
@@ -34,9 +43,9 @@
   <button class="filter-btn" data-filter="fullstack">Full-Stack Development</button>
 </div>
 
-<div class="intro-note">
+<p class="intro-note">
   <b>New here?</b> Each project links back to the course section that teaches what you'll need. Start with the <a href="Embedded_Systems.html">Embedded C course</a> or the <a href="Full-Stack.html">Full-Stack course</a> if a project below looks unfamiliar.
-</div>
+</p>
 
 <!-- ================= EMBEDDED SYSTEMS ================= -->
 <section class="track-section" data-track="embedded">
@@ -48,42 +57,42 @@
 
   <div class="project-grid">
 
-    <div class="project-card embedded">
+    <div class="project-card glass embedded">
       <div class="top-row"><span class="difficulty beginner">Beginner</span></div>
       <h3>Blink &amp; Beyond</h3>
       <p class="desc">Start with a single blinking LED, then extend it: add a push button, create blink patterns, and debounce the input in software.</p>
       <div class="tags"><span class="tag">GPIO</span><span class="tag">bit manipulation</span><span class="tag">registers</span></div>
     </div>
 
-    <div class="project-card embedded">
+    <div class="project-card glass embedded">
       <div class="top-row"><span class="difficulty beginner">Beginner</span></div>
       <h3>Temperature Logger</h3>
       <p class="desc">Read an analog temperature sensor with the ADC and print live readings over UART to your computer's serial monitor.</p>
       <div class="tags"><span class="tag">ADC</span><span class="tag">UART</span><span class="tag">structs</span></div>
     </div>
 
-    <div class="project-card embedded">
+    <div class="project-card glass embedded">
       <div class="top-row"><span class="difficulty intermediate">Intermediate</span></div>
       <h3>Traffic Light Controller</h3>
       <p class="desc">Build a proper state machine that cycles red → green → yellow using hardware timers instead of busy-wait delays.</p>
       <div class="tags"><span class="tag">state machines</span><span class="tag">timers</span><span class="tag">enums</span></div>
     </div>
 
-    <div class="project-card embedded">
+    <div class="project-card glass embedded">
       <div class="top-row"><span class="difficulty intermediate">Intermediate</span></div>
       <h3>Reaction Timer Game</h3>
       <p class="desc">An LED lights up at a random moment; the player presses a button as fast as possible. Uses interrupts to catch the press instantly.</p>
       <div class="tags"><span class="tag">interrupts</span><span class="tag">volatile</span><span class="tag">timers</span></div>
     </div>
 
-    <div class="project-card embedded">
+    <div class="project-card glass embedded">
       <div class="top-row"><span class="difficulty advanced">Advanced</span></div>
       <h3>IoT Weather Station</h3>
       <p class="desc">Read temperature and humidity over I2C on an ESP32, then push readings to a cloud endpoint over Wi-Fi every few minutes.</p>
       <div class="tags"><span class="tag">I2C</span><span class="tag">Wi-Fi</span><span class="tag">HTTP</span></div>
     </div>
 
-    <div class="project-card embedded">
+    <div class="project-card glass embedded">
       <div class="top-row"><span class="difficulty advanced">Advanced</span></div>
       <h3>Mini Task Scheduler</h3>
       <p class="desc">Write a small cooperative scheduler from scratch that runs several "tasks" in round-robin order — a first taste of RTOS concepts.</p>
@@ -103,42 +112,42 @@
 
   <div class="project-grid">
 
-    <div class="project-card full">
+    <div class="project-card glass full">
       <div class="top-row"><span class="difficulty beginner">Beginner</span></div>
       <h3>Personal Portfolio Site</h3>
       <p class="desc">A responsive one-page site about you — projects, skills, and contact links — built with just HTML, CSS, and Flexbox.</p>
       <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flexbox</span></div>
     </div>
 
-    <div class="project-card full">
+    <div class="project-card glass full">
       <div class="top-row"><span class="difficulty beginner">Beginner</span></div>
       <h3>To-Do List App</h3>
       <p class="desc">A fully client-side to-do list: add, check off, and delete tasks, saved between visits using the browser's localStorage.</p>
       <div class="tags"><span class="tag">DOM</span><span class="tag">JavaScript</span><span class="tag">localStorage</span></div>
     </div>
 
-    <div class="project-card full">
+    <div class="project-card glass full">
       <div class="top-row"><span class="difficulty intermediate">Intermediate</span></div>
       <h3>Weather Dashboard</h3>
       <p class="desc">Fetch live weather data from a public API and display it with clean, dynamically-updated cards — no page reloads required.</p>
       <div class="tags"><span class="tag">fetch</span><span class="tag">async JS</span><span class="tag">public API</span></div>
     </div>
 
-    <div class="project-card full">
+    <div class="project-card glass full">
       <div class="top-row"><span class="difficulty intermediate">Intermediate</span></div>
       <h3>REST API To-Do App</h3>
       <p class="desc">Rebuild the to-do list, but properly this time: a Node.js + Express backend stores tasks in a database instead of the browser.</p>
       <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">REST API</span></div>
     </div>
 
-    <div class="project-card full">
+    <div class="project-card glass full">
       <div class="top-row"><span class="difficulty advanced">Advanced</span></div>
       <h3>Full-Stack Blog Platform</h3>
       <p class="desc">Users can sign up, log in, and publish posts. Covers authentication, a real database schema, and full CRUD operations end to end.</p>
       <div class="tags"><span class="tag">auth</span><span class="tag">database</span><span class="tag">CRUD</span></div>
     </div>
 
-    <div class="project-card full">
+    <div class="project-card glass full">
       <div class="top-row"><span class="difficulty advanced">Advanced</span></div>
       <h3>Deploy &amp; Ship</h3>
       <p class="desc">Take any project above and put it online for real: push to GitHub, deploy the frontend and backend, and connect a custom domain.</p>
@@ -148,14 +157,47 @@
   </div>
 </section>
 
-<footer>
-  <p>&copy; <span id="copyright-year"></span> Electrons <sup>.e-</sup> Academy | Designed for future innovators</p>
-  <p><a href="index.html">← Back to Home</a></p>
+<footer class="site-footer" style="margin-top:40px;">
+  <div class="fmark">
+    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class="orbit-a" cx="20" cy="20" rx="16" ry="7" transform="rotate(30 20 20)"/>
+      <ellipse class="orbit-b" cx="20" cy="20" rx="16" ry="7" transform="rotate(-30 20 20)"/>
+      <circle class="nucleus" cx="20" cy="20" r="3.2"/>
+    </svg>
+    <span>&copy; <span id="copyright-year"></span> Electrons .e- Academy | Designed for future innovators</span>
+  </div>
+  <div class="flinks">
+    <a href="Embedded_Systems.html">Embedded C</a>
+    <a href="Full-Stack.html">Full-Stack</a>
+    <a href="index.html">Home</a>
+  </div>
 </footer>
+
+<!-- ===== CHAT BOT (floating) ===== -->
+<div class="chat-float">
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <span><i class="fas fa-robot" style="margin-right:6px;"></i> .e- Bot</span>
+      <button id="closeChatBtn" aria-label="Close chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg bot">👋 Hi! Looking for a project to start with? Try asking "beginner embedded" or "beginner full-stack".</div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+      <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chatToggleBtn">
+    <i class="fas fa-comment-dots"></i> Chat
+  </button>
+</div>
 
 <script>
   document.getElementById('copyright-year').textContent = new Date().getFullYear();
-
+</script>
+<script src="script.js"></script>
+<script>
   const buttons = document.querySelectorAll('.filter-btn');
   const sections = document.querySelectorAll('.track-section');
 
@@ -166,11 +208,7 @@
       const filter = btn.dataset.filter;
 
       sections.forEach(sec => {
-        if (filter === 'all' || sec.dataset.track === filter) {
-          sec.style.display = '';
-        } else {
-          sec.style.display = 'none';
-        }
+        sec.style.display = (filter === 'all' || sec.dataset.track === filter) ? '' : 'none';
       });
     });
   });
