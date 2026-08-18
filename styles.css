@@ -19,14 +19,16 @@
   width:150px; height:150px; margin:0 auto 28px; position:relative;
 }
 .hero .orbit-wrap svg{ width:100%; height:100%; }
-.hero .orbit-wrap .orbit-a{ stroke:var(--emb); fill:none; stroke-width:1.4; opacity:.85; }
-.hero .orbit-wrap .orbit-b{ stroke:var(--full); fill:none; stroke-width:1.4; opacity:.85; }
-.hero .orbit-wrap .orbit-c{ stroke:var(--full-2); fill:none; stroke-width:1.2; opacity:.6; }
+.hero .orbit-wrap .orbit-a{ stroke:var(--emb); fill:none; stroke-width:1.4; opacity:.9; }
+.hero .orbit-wrap .orbit-b{ stroke:var(--full); fill:none; stroke-width:1.4; opacity:.9; }
+.hero .orbit-wrap .orbit-c{ stroke:var(--full-2); fill:none; stroke-width:1.4; opacity:.75; }
 .hero .orbit-wrap .nucleus{ fill:var(--text); }
 .hero .orbit-wrap .e1{ fill:var(--emb); }
 .hero .orbit-wrap .e2{ fill:var(--full); }
+.hero .orbit-wrap .e3, .hero .orbit-wrap .e4{ fill:var(--full-2); }
 .hero .orbit-wrap g.spin-a{ transform-origin:75px 75px; animation:spin 7s linear infinite; }
 .hero .orbit-wrap g.spin-b{ transform-origin:75px 75px; animation:spin 11s linear infinite reverse; }
+.hero .orbit-wrap g.spin-c{ transform-origin:75px 75px; animation:spin 9s linear infinite; }
 @keyframes spin{ to{ transform:rotate(360deg); } }
 @media (prefers-reduced-motion: reduce){ .hero .orbit-wrap g{ animation:none; } }
 
