@@ -98,7 +98,7 @@
 .gallery-row{ display:flex; gap:12px; flex-wrap:wrap; }
 .gallery-row img{ width:130px; height:130px; object-fit:cover; border-radius:10px; border:1px solid var(--border); }
 
-/* ---- Silicon Atom Visualization (replaces video/audio) ---- */
+/* ---- Silicon Atom Visualization ---- */
 .atom-visualization-panel {
   display: flex;
   flex-direction: column;
@@ -122,14 +122,12 @@
 .atom-visualization svg text {
   font-family: 'JetBrains Mono', monospace;
 }
-/* ensure the atom's glow filters work inside the panel */
 .atom-visualization svg [filter*="glow-blue"] {
   filter: drop-shadow(0 0 6px #5fd0ff) drop-shadow(0 0 18px rgba(95,208,255,0.5));
 }
 .atom-visualization svg [filter*="glow-orange"] {
   filter: drop-shadow(0 0 6px #ff9248) drop-shadow(0 0 18px rgba(255,146,72,0.5));
 }
-/* re-apply if inline filter isn't enough */
 .atom-visualization svg .glow-blue,
 .atom-visualization svg circle[filter="url(#glow-blue)"] {
   filter: drop-shadow(0 0 6px #5fd0ff) drop-shadow(0 0 18px rgba(95,208,255,0.5));
@@ -138,10 +136,43 @@
 .atom-visualization svg circle[filter="url(#glow-orange)"] {
   filter: drop-shadow(0 0 6px #ff9248) drop-shadow(0 0 18px rgba(255,146,72,0.5));
 }
+
+/* ---- Diamond Cubic Lattice Visualization (new) ---- */
+.lattice-visualization-panel {
+  display: flex;
+  flex-direction: column;
+}
+.lattice-visualization {
+  flex: 1;
+  background: radial-gradient(ellipse at 50% 40%, #0d1220 0%, #050608 70%);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 8px;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lattice-visualization svg {
+  width: 100%;
+  max-height: 300px;
+  display: block;
+}
+.lattice-visualization svg text {
+  font-family: 'JetBrains Mono', monospace;
+}
+.lattice-visualization svg [filter*="glow-blue2"] {
+  filter: drop-shadow(0 0 6px #5fd0ff) drop-shadow(0 0 18px rgba(95,208,255,0.5));
+}
+.lattice-visualization svg [filter*="glow-orange2"] {
+  filter: drop-shadow(0 0 6px #ff9248) drop-shadow(0 0 18px rgba(255,146,72,0.5));
+}
 /* fallback for older browsers */
 @supports not (filter: drop-shadow(0 0 6px #5fd0ff)) {
   .atom-visualization svg circle[fill="#bff1ff"] { stroke: #5fd0ff; stroke-width: 1px; }
   .atom-visualization svg circle[fill="url(#nucGrad)"] { stroke: #ff9248; stroke-width: 1px; }
+  .lattice-visualization svg circle[fill="#eaffff"] { stroke: #5fd0ff; stroke-width: 1px; }
+  .lattice-visualization svg circle[fill="url(#nucGrad2)"] { stroke: #ff9248; stroke-width: 1px; }
 }
 
 /* ---------------- Social ---------------- */
