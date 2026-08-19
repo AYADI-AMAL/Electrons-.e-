@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Embedded C — Beginner's Course</title>
 <link rel="icon" type="image/x-icon" href="image\Diploma-in-Embedded-System-1.ico">
-<link rel="stylesheet" href="Emb-Style.css" />
+<link rel="stylesheet" href="Emb-Style.css">
 </head>
 <body>
 <div class="app">
-
-  <!-- Sidebar Overlay for mobile -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <aside class="sidebar" id="sidebar">
     <a href="index.html" class="backlink">← Electrons .e- Academy</a>
@@ -61,7 +58,6 @@
       <div class="reg-caption">This is a preview: four wires, one of them "on." By section 12 you'll know exactly what that means.</div>
     </div>
 
-    <!-- All sections remain the same as before -->
     <!-- 1 -->
     <section id="intro">
       <h2><span class="num">01</span> What Is Embedded C?</h2>
@@ -403,42 +399,17 @@ LED_PORT |= (<span class="s">1</span> &lt;&lt; <span class="s">5</span>);   <spa
     </footer>
   </main>
 </div>
+
 <script>
   const toggle = document.getElementById('navToggle');
   const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
-  
-  if (toggle) {
-    toggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      sidebar.classList.toggle('open');
-      if (overlay) overlay.classList.toggle('active');
-    });
-  }
-  
-  if (overlay) {
-    overlay.addEventListener('click', function() {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('active');
-    });
-  }
-  
-  const navLinks = document.querySelectorAll('nav a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      if (window.innerWidth <= 900) {
-        sidebar.classList.remove('open');
-        if (overlay) overlay.classList.remove('active');
-      }
-    });
-  });
+  if (toggle) toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
 
   const links = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('section');
   const map = new Map();
   links.forEach(l => map.set(l.getAttribute('href').slice(1), l));
 
-  // Updated observer with sidebar scrolling
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const link = map.get(entry.target.id);
@@ -446,21 +417,6 @@ LED_PORT |= (<span class="s">1</span> &lt;&lt; <span class="s">5</span>);   <spa
       if (entry.isIntersecting) {
         links.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-        
-        // Scroll sidebar to keep active link visible (desktop only)
-        if (window.innerWidth > 900) {
-          const linkTop = link.offsetTop;
-          const sidebarHeight = sidebar.clientHeight;
-          const currentScroll = sidebar.scrollTop;
-          
-          // If link is outside visible area, scroll to it
-          if (linkTop < currentScroll || linkTop > currentScroll + sidebarHeight - 80) {
-            sidebar.scrollTo({
-              top: Math.max(0, linkTop - 30),
-              behavior: 'smooth'
-            });
-          }
-        }
       }
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
