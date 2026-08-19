@@ -380,35 +380,11 @@ app.<span class="f">listen</span>(<span class="s">3000</span>);</pre>
   </main>
 </div>
 
+
 <script>
   const toggle = document.getElementById('navToggle');
   const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
-  
-  if (toggle) {
-    toggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      sidebar.classList.toggle('open');
-      if (overlay) overlay.classList.toggle('active');
-    });
-  }
-  
-  if (overlay) {
-    overlay.addEventListener('click', function() {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('active');
-    });
-  }
-  
-  const navLinks = document.querySelectorAll('nav a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      if (window.innerWidth <= 900) {
-        sidebar.classList.remove('open');
-        if (overlay) overlay.classList.remove('active');
-      }
-    });
-  });
+  if (toggle) toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
 
   const links = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('section');
