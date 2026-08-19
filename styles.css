@@ -137,12 +137,12 @@
   filter: drop-shadow(0 0 6px #ff9248) drop-shadow(0 0 18px rgba(255,146,72,0.5));
 }
 
-/* ---- Diamond Cubic Lattice Visualization (new) ---- */
-.lattice-visualization-panel {
+/* ---- Integrated Circuit Chip Visualization (new) ---- */
+.chip-visualization-panel {
   display: flex;
   flex-direction: column;
 }
-.lattice-visualization {
+.chip-visualization {
   flex: 1;
   background: radial-gradient(ellipse at 50% 40%, #0d1220 0%, #050608 70%);
   border-radius: 12px;
@@ -153,26 +153,22 @@
   align-items: center;
   justify-content: center;
 }
-.lattice-visualization svg {
+.chip-visualization svg {
   width: 100%;
   max-height: 300px;
   display: block;
 }
-.lattice-visualization svg text {
+.chip-visualization svg text {
   font-family: 'JetBrains Mono', monospace;
 }
-.lattice-visualization svg [filter*="glow-blue2"] {
-  filter: drop-shadow(0 0 6px #5fd0ff) drop-shadow(0 0 18px rgba(95,208,255,0.5));
-}
-.lattice-visualization svg [filter*="glow-orange2"] {
-  filter: drop-shadow(0 0 6px #ff9248) drop-shadow(0 0 18px rgba(255,146,72,0.5));
+.chip-visualization svg [filter*="glow-gold"] {
+  filter: drop-shadow(0 0 6px #f0c26a) drop-shadow(0 0 18px rgba(240,194,106,0.45));
 }
 /* fallback for older browsers */
-@supports not (filter: drop-shadow(0 0 6px #5fd0ff)) {
+@supports not (filter: drop-shadow(0 0 6px #f0c26a)) {
   .atom-visualization svg circle[fill="#bff1ff"] { stroke: #5fd0ff; stroke-width: 1px; }
   .atom-visualization svg circle[fill="url(#nucGrad)"] { stroke: #ff9248; stroke-width: 1px; }
-  .lattice-visualization svg circle[fill="#eaffff"] { stroke: #5fd0ff; stroke-width: 1px; }
-  .lattice-visualization svg circle[fill="url(#nucGrad2)"] { stroke: #ff9248; stroke-width: 1px; }
+  .chip-visualization svg circle[fill="#ffe6b0"] { stroke: #f0c26a; stroke-width: 1px; }
 }
 
 /* ---------------- Social ---------------- */
