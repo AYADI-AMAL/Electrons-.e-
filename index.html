@@ -97,7 +97,7 @@
     <p>A quick look at the academy, straight from the source.</p>
   </div>
   <div class="media-grid">
-    <!-- SILICON ATOM VISUALIZATION — replaces video -->
+    <!-- SILICON ATOM VISUALIZATION -->
     <div class="media-panel glass atom-visualization-panel">
       <h3>Silicon Atom — From Electron to Circuit</h3>
       <div class="atom-visualization">
@@ -112,25 +112,20 @@
             <filter id="glow-orange"><feGaussianBlur stdDeviation="2.5"/></filter>
           </defs>
           <g transform="translate(200, 175)">
-            <!-- orbital shells -->
             <circle r="85" fill="none" stroke="#1c2836" stroke-width="1.2"/>
             <circle r="58" fill="none" stroke="#1c2836" stroke-width="1"/>
             <circle r="33" fill="none" stroke="#1c2836" stroke-width="1"/>
-            <!-- nucleus -->
             <circle r="14" fill="#1a0f06" opacity="0.7"/>
             <circle r="11" fill="url(#nucGrad)" filter="url(#glow-orange)"/>
-            <!-- K shell: 2 e⁻ -->
             <g>
               <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/>
               <circle cx="33" cy="0" r="3.8" fill="#bff1ff" filter="url(#glow-blue)"/>
               <circle cx="-33" cy="0" r="3.8" fill="#bff1ff" filter="url(#glow-blue)"/>
             </g>
-            <!-- L shell: 8 e⁻ -->
             <g>
               <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="9s" repeatCount="indefinite"/>
               <g id="shellL"></g>
             </g>
-            <!-- M shell: 4 e⁻ -->
             <g transform="rotate(18)">
               <animateTransform attributeName="transform" type="rotate" from="18" to="378" dur="13s" repeatCount="indefinite"/>
               <g id="shellM"></g>
@@ -141,14 +136,25 @@
       </div>
     </div>
 
-    <!-- GALLERY & WORKSHOP QUICK LINKS — replaces audio -->
-    <div class="media-panel glass">
-      <h3>Gallery &amp; Workshop Highlights</h3>
-      <div class="gallery-row">
-        <img src="image\Diploma-in-Embedded-System-1.png" alt="Lab Session">
-        <img src="image\logo.gif" alt="Student Project">
+    <!-- DIAMOND CUBIC LATTICE VISUALIZATION — replaces gallery -->
+    <div class="media-panel glass lattice-visualization-panel">
+      <h3>Diamond Cubic Lattice — Covalent Bonds</h3>
+      <div class="lattice-visualization">
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="nucGrad2" cx="35%" cy="35%" r="70%">
+              <stop offset="0%" stop-color="#ffd9a8"/>
+              <stop offset="55%" stop-color="#ff9248"/>
+              <stop offset="100%" stop-color="#7a3d16"/>
+            </radialGradient>
+            <filter id="glow-blue2"><feGaussianBlur stdDeviation="2.5"/></filter>
+            <filter id="glow-orange2"><feGaussianBlur stdDeviation="2.5"/></filter>
+          </defs>
+          <g id="lattice-vis" transform="translate(250, 200)"></g>
+          <text x="250" y="380" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#6b7684" letter-spacing="2">DIAMOND CUBIC LATTICE · COVALENT BONDS</text>
+        </svg>
       </div>
-      <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+      <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
         <a href="Workshops.html" class="btn btn-primary" style="padding:8px 18px; font-size:13px;">View All Workshops</a>
         <a href="#Courses" class="btn btn-ghost" style="padding:8px 18px; font-size:13px;">Start a Course</a>
       </div>
@@ -239,6 +245,74 @@
     }
     buildShell('shellL', 58, 8);
     buildShell('shellM', 82, 4);
+  })();
+
+  // ---- Build Diamond Cubic Lattice ----
+  (function buildLatticeVisualization() {
+    const NS = "http://www.w3.org/2000/svg";
+    const el = (tag, attrs) => {
+      const e = document.createElementNS(NS, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    };
+
+    const g = document.getElementById('lattice-vis');
+    if (!g) return;
+
+    const cols = 6, rows = 5, spacing = 60;
+    const offsetX = -((cols-1) * spacing) / 2;
+    const offsetY = -((rows-1) * spacing * 0.86) / 2;
+    const nodes = [];
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const stagger = (r % 2 === 0) ? 0 : spacing / 2;
+        const x = offsetX + c * spacing + stagger;
+        const y = offsetY + r * (spacing * 0.86);
+        nodes.push({ x, y, r, c });
+      }
+    }
+
+    // bonds
+    const bondsGroup = el('g', { stroke: '#4fb8e0', 'stroke-width': 1.6, opacity: 0.5 });
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < spacing * 0.75) {
+          const line = el('line', {
+            x1: nodes[i].x, y1: nodes[i].y,
+            x2: nodes[j].x, y2: nodes[j].y
+          });
+          bondsGroup.appendChild(line);
+        }
+      }
+    }
+    g.appendChild(bondsGroup);
+
+    // shared-electron glints
+    bondsGroup.querySelectorAll('line').forEach((line, idx) => {
+      const dot = el('circle', { r: 2.4, fill: '#eaffff' });
+      const am = el('animateMotion', {
+        dur: (3 + (idx % 5) * 0.4).toFixed(1) + 's',
+        repeatCount: 'indefinite',
+        path: `M${line.getAttribute('x1')},${line.getAttribute('y1')} L${line.getAttribute('x2')},${line.getAttribute('y2')} L${line.getAttribute('x1')},${line.getAttribute('y1')}`
+      });
+      dot.appendChild(am);
+      dot.setAttribute('filter', 'url(#glow-blue2)');
+      g.appendChild(dot);
+    });
+
+    // atoms
+    nodes.forEach(n => {
+      const atom = el('circle', {
+        cx: n.x, cy: n.y,
+        r: 8,
+        fill: 'url(#nucGrad2)'
+      });
+      atom.setAttribute('filter', 'url(#glow-orange2)');
+      g.appendChild(atom);
+    });
   })();
 </script>
 <script src="script.js"></script>
