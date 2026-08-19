@@ -136,22 +136,138 @@
       </div>
     </div>
 
-    <!-- DIAMOND CUBIC LATTICE VISUALIZATION — replaces gallery -->
-    <div class="media-panel glass lattice-visualization-panel">
-      <h3>Diamond Cubic Lattice — Covalent Bonds</h3>
-      <div class="lattice-visualization">
+    <!-- INTEGRATED CIRCUIT CHIP VISUALIZATION — replaces gallery -->
+    <div class="media-panel glass chip-visualization-panel">
+      <h3>Integrated Circuit — Gold Traces &amp; Pulsing Current</h3>
+      <div class="chip-visualization">
         <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="nucGrad2" cx="35%" cy="35%" r="70%">
-              <stop offset="0%" stop-color="#ffd9a8"/>
-              <stop offset="55%" stop-color="#ff9248"/>
-              <stop offset="100%" stop-color="#7a3d16"/>
+            <linearGradient id="chipBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#171b22"/>
+              <stop offset="100%" stop-color="#05070a"/>
+            </linearGradient>
+            <radialGradient id="padGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c9a35c"/>
+              <stop offset="100%" stop-color="#7a5f2e"/>
             </radialGradient>
-            <filter id="glow-blue2"><feGaussianBlur stdDeviation="2.5"/></filter>
-            <filter id="glow-orange2"><feGaussianBlur stdDeviation="2.5"/></filter>
+            <filter id="glow-gold"><feGaussianBlur stdDeviation="2.5"/></filter>
           </defs>
-          <g id="lattice-vis" transform="translate(250, 200)"></g>
-          <text x="250" y="380" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#6b7684" letter-spacing="2">DIAMOND CUBIC LATTICE · COVALENT BONDS</text>
+          
+          <!-- Pins - Left side -->
+          <g id="pins-left">
+            <rect x="140" y="85" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="105" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="125" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="145" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="165" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="185" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="205" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="225" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="245" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="265" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="285" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="140" y="305" width="16" height="8" fill="#c9a35c" rx="1"/>
+          </g>
+          
+          <!-- Pins - Right side -->
+          <g id="pins-right">
+            <rect x="344" y="85" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="105" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="125" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="145" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="165" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="185" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="205" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="225" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="245" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="265" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="285" width="16" height="8" fill="#c9a35c" rx="1"/>
+            <rect x="344" y="305" width="16" height="8" fill="#c9a35c" rx="1"/>
+          </g>
+          
+          <!-- Pins - Top -->
+          <g id="pins-top">
+            <rect x="175" y="55" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="200" y="55" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="225" y="55" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="250" y="55" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="275" y="55" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="300" y="55" width="8" height="16" fill="#c9a35c" rx="1"/>
+          </g>
+          
+          <!-- Pins - Bottom -->
+          <g id="pins-bottom">
+            <rect x="175" y="329" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="200" y="329" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="225" y="329" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="250" y="329" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="275" y="329" width="8" height="16" fill="#c9a35c" rx="1"/>
+            <rect x="300" y="329" width="8" height="16" fill="#c9a35c" rx="1"/>
+          </g>
+          
+          <!-- Chip body -->
+          <rect x="155" y="70" width="190" height="260" rx="8" fill="url(#chipBody)" stroke="#3a4756" stroke-width="1.8"/>
+          
+          <!-- Chip traces -->
+          <g stroke="#8a6a33" stroke-width="1.4" fill="none" opacity="0.55">
+            <path d="M 170 90 L 170 140 L 210 140 L 210 180 L 250 180"/>
+            <path d="M 330 90 L 330 130 L 290 130 L 290 170 L 250 170"/>
+            <path d="M 170 310 L 170 260 L 210 260 L 210 220 L 250 220"/>
+            <path d="M 330 310 L 330 270 L 290 270 L 290 230 L 250 230"/>
+            <path d="M 250 75 L 250 100 L 220 100 L 220 130"/>
+            <path d="M 250 325 L 250 300 L 280 300 L 280 270"/>
+            <!-- Fine mesh -->
+            <path d="M 175 110 L 325 110" opacity="0.25"/>
+            <path d="M 175 140 L 325 140" opacity="0.25"/>
+            <path d="M 175 170 L 325 170" opacity="0.25"/>
+            <path d="M 175 200 L 325 200" opacity="0.25"/>
+            <path d="M 175 230 L 325 230" opacity="0.25"/>
+            <path d="M 175 260 L 325 260" opacity="0.25"/>
+            <path d="M 175 290 L 325 290" opacity="0.25"/>
+          </g>
+          
+          <!-- Pulsing current dots -->
+          <g id="chip-current">
+            <circle r="3.5" fill="#ffe6b0" filter="url(#glow-gold)">
+              <animateMotion dur="2.8s" repeatCount="indefinite" path="M 170 90 L 170 140 L 210 140 L 210 180 L 250 180"/>
+            </circle>
+            <circle r="3.5" fill="#ffe6b0" filter="url(#glow-gold)">
+              <animateMotion dur="3.2s" repeatCount="indefinite" path="M 330 90 L 330 130 L 290 130 L 290 170 L 250 170"/>
+            </circle>
+            <circle r="3.5" fill="#ffe6b0" filter="url(#glow-gold)">
+              <animateMotion dur="3.0s" repeatCount="indefinite" path="M 170 310 L 170 260 L 210 260 L 210 220 L 250 220"/>
+            </circle>
+            <circle r="3.5" fill="#ffe6b0" filter="url(#glow-gold)">
+              <animateMotion dur="3.4s" repeatCount="indefinite" path="M 330 310 L 330 270 L 290 270 L 290 230 L 250 230"/>
+            </circle>
+            <circle r="3.5" fill="#ffe6b0" filter="url(#glow-gold)">
+              <animateMotion dur="2.5s" repeatCount="indefinite" path="M 250 75 L 250 100 L 220 100 L 220 130"/>
+            </circle>
+            <circle r="3.5" fill="#ffe6b0" filter="url(#glow-gold)">
+              <animateMotion dur="2.6s" repeatCount="indefinite" path="M 250 325 L 250 300 L 280 300 L 280 270"/>
+            </circle>
+          </g>
+          
+          <!-- Gold trace glow pulses -->
+          <g stroke="#ffcf7a" stroke-width="2" fill="none" opacity="0">
+            <path d="M 170 90 L 170 140 L 210 140 L 210 180 L 250 180">
+              <animate attributeName="opacity" values="0;0.7;0" dur="2.8s" repeatCount="indefinite"/>
+            </path>
+            <path d="M 330 90 L 330 130 L 290 130 L 290 170 L 250 170">
+              <animate attributeName="opacity" values="0;0.7;0" dur="3.2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M 170 310 L 170 260 L 210 260 L 210 220 L 250 220">
+              <animate attributeName="opacity" values="0;0.7;0" dur="3.0s" repeatCount="indefinite"/>
+            </path>
+            <path d="M 330 310 L 330 270 L 290 270 L 290 230 L 250 230">
+              <animate attributeName="opacity" values="0;0.7;0" dur="3.4s" repeatCount="indefinite"/>
+            </path>
+          </g>
+          
+          <!-- Corner marker -->
+          <circle cx="170" cy="85" r="3.5" fill="#4a3620"/>
+          
+          <text x="250" y="380" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#6b7684" letter-spacing="2">INTEGRATED CIRCUIT · GOLD TRACES &amp; PULSING CURRENT</text>
         </svg>
       </div>
       <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
@@ -245,74 +361,6 @@
     }
     buildShell('shellL', 58, 8);
     buildShell('shellM', 82, 4);
-  })();
-
-  // ---- Build Diamond Cubic Lattice ----
-  (function buildLatticeVisualization() {
-    const NS = "http://www.w3.org/2000/svg";
-    const el = (tag, attrs) => {
-      const e = document.createElementNS(NS, tag);
-      for (const k in attrs) e.setAttribute(k, attrs[k]);
-      return e;
-    };
-
-    const g = document.getElementById('lattice-vis');
-    if (!g) return;
-
-    const cols = 6, rows = 5, spacing = 60;
-    const offsetX = -((cols-1) * spacing) / 2;
-    const offsetY = -((rows-1) * spacing * 0.86) / 2;
-    const nodes = [];
-
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const stagger = (r % 2 === 0) ? 0 : spacing / 2;
-        const x = offsetX + c * spacing + stagger;
-        const y = offsetY + r * (spacing * 0.86);
-        nodes.push({ x, y, r, c });
-      }
-    }
-
-    // bonds
-    const bondsGroup = el('g', { stroke: '#4fb8e0', 'stroke-width': 1.6, opacity: 0.5 });
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < spacing * 0.75) {
-          const line = el('line', {
-            x1: nodes[i].x, y1: nodes[i].y,
-            x2: nodes[j].x, y2: nodes[j].y
-          });
-          bondsGroup.appendChild(line);
-        }
-      }
-    }
-    g.appendChild(bondsGroup);
-
-    // shared-electron glints
-    bondsGroup.querySelectorAll('line').forEach((line, idx) => {
-      const dot = el('circle', { r: 2.4, fill: '#eaffff' });
-      const am = el('animateMotion', {
-        dur: (3 + (idx % 5) * 0.4).toFixed(1) + 's',
-        repeatCount: 'indefinite',
-        path: `M${line.getAttribute('x1')},${line.getAttribute('y1')} L${line.getAttribute('x2')},${line.getAttribute('y2')} L${line.getAttribute('x1')},${line.getAttribute('y1')}`
-      });
-      dot.appendChild(am);
-      dot.setAttribute('filter', 'url(#glow-blue2)');
-      g.appendChild(dot);
-    });
-
-    // atoms
-    nodes.forEach(n => {
-      const atom = el('circle', {
-        cx: n.x, cy: n.y,
-        r: 8,
-        fill: 'url(#nucGrad2)'
-      });
-      atom.setAttribute('filter', 'url(#glow-orange2)');
-      g.appendChild(atom);
-    });
   })();
 </script>
 <script src="script.js"></script>
